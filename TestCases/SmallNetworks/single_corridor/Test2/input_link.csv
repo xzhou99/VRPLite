@@ -1,0 +1,6 @@
+from_node_id,to_node_id,direction,length,number_of_lanes,speed_limit_in_mph,lane_capacity_in_vhc_per_hour,link_type,jam_density
+1,2,1,0.833,1,25,4950,1,180
+2,3,1,1.667,1,25,4950,1,180
+3,4,1,0.833,1,25,4950,1,180
+4,5,1,1.667,1,25,4950,1,180
+5,6,1,0.833,1,25,4950,1,180

@@ -1,0 +1,50 @@
+Network has 12 nodes, 15 links, 2  passengers, 1 vehicles
+
+link no.6,  2->7, service code 1
+link no.7,  7->2, service code 1
+link no.8,  4->8, service code -1
+link no.9,  8->4, service code -1
+link no.10,  3->9, service code 2
+link no.11,  9->3, service code 2
+link no.12,  5->10, service code -2
+link no.13,  10->5, service code -2
+link no.14,  11->1, service code 100
+link no.15,  6->12, service code 101
+
+
+Debug: LB iteration 0, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6}}; Label Cost 12.000000
+ LR_global_lower_bound = , 14.000000
+Debug: LB iteration 1, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 2, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 3, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 4, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 5, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 6, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 7, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 8, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Debug: LB iteration 9, Vehicle 1 performing DP: origin 1 -> destination 6
+ Dual 	{{n6_1[2]_2[2]}}; Label Cost 0.500000
+ LR_global_lower_bound = , 22.500000
+Generate upper bound
+Primal 	{{n6_1[2]_2[2]}}; Label Cost 22.500000
+LR_global_upper_bound += path_cost_by_vehicle_1, 22.500000, 22.500000Summary: Lower Bound = 22.500000, upper Bound = 22.500000, gap = 0.000000, relative_gap = 0.000%
+******************************************************************************************************************
+
+CPU Running Time = 37 milliseconds
