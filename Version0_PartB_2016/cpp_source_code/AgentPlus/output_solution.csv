@@ -1,0 +1,11 @@
+number of passengers=, 0
+number of vehicles =,0
+Least Travel Time for Pax,
+,
+Modified Vehilce Time,begining, endinging
+Reduced Search Space Perc for Veh,
+,
+,
+BB Node No, Iteration,Lower Bound,Upper Bound,Gap,Relative_gap,# of pax not served,best_# of pax not served,total_price,
+0,1,-99999.000000,0.000000,99999.000000,9999900.000%,0,0,-0.00,
+CPU Running Time =,16, milliseconds

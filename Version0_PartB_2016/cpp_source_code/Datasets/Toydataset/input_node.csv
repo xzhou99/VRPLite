@@ -1,0 +1,7 @@
+id,name,node_id_old,node_id,QEM_reference_node_id,control_type,control_type_name,x,y,geometry
+,,1,1,0,1,no_control,61.671,71.431,"<Point><coordinates>-111.966919,33.298074</coordinates></Point>"
+,,2,2,0,1,no_control,60.451,70.882,"<Point><coordinates>-111.953428,33.312833</coordinates></Point>"
+,,3,3,0,1,no_control,62.22,69.113,"<Point><coordinates>-111.953709,33.298005</coordinates></Point>"
+,,4,4,0,1,no_control,60.939,68.198,"<Point><coordinates>-111.936674,33.312751</coordinates></Point>"
+,,5,5,0,1,no_control,62.83,66.063,"<Point><coordinates>-111.936419,33.297912</coordinates></Point>"
+,,6,6,0,1,no_control,58.194,69.967,"<Point><coordinates>-111.919004,33.312896</coordinates></Point>"

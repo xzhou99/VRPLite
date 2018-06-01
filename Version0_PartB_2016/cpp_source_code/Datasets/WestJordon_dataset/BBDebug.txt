@@ -1,0 +1,7 @@
+!!!   Cal: update upper bound from (node UB)99999 to a new 15.4
+   Node 0 with LB =-99999 UB= 15.4
+Find an active node 0 with a  UB cost = 15.4 LB cost = -99999
+   To be branch: pax 1 with 0 competing vehicle
+   To be branch: pax 2 with 0 competing vehicle
+
+Optimal Cost is 15.4 Number of Nodes checked = 1

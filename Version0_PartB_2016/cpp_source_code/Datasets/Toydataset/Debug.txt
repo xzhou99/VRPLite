@@ -1,0 +1,1259 @@
+Network has 10 nodes, 21 links, 0 toll records, 2  passengers, 3 vehicles
+
+link no.14,  2->7, service code 1
+link no.16,  3->8, service code -1
+link no.18,  2->9, service code 2
+link no.20,  3->10, service code -2
+
+passenger 1 starts from node 2 to node 3, start time 15->18, ending time 22->23
+passenger 2 starts from node 2 to node 3, start time 35->38, ending time 42->43
+vehicle 1 starts from node 4 to node 1, start time 1->2, ending time 100->101
+vehicle 2 starts from node 2 to node 2, start time 8->8, ending time 110->110
+vehicle 3 starts from node 2 to node 2, start time 28->28, ending time 110->110
+
+state no. 0: _ _ ; outgoing state list:0  1  2  
+state no. 1: _1_ ; outgoing state list:1  0  3  
+state no. 2: _ _2; outgoing state list:2  3  0  
+state no. 3: _1_2; outgoing state list:3  2  1  
+
+--------------------------- travel time ---------------------------
+pax no.1: Departure Time = 15 (min), Travel Time = 3.00 (min), Earliest Arrival Time = 18.00
+pax no.2: Departure Time = 35 (min), Travel Time = 3.00 (min), Earliest Arrival Time = 38.00
+
+
+Step 0: Initialization 
+---------------------------BBNodeNo 0-Lagrangian Iteration: 1 ---------------------------
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 1	1	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	2	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	3	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	4	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	5	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	6	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	7	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	8	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	9	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	10	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	11	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	12	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	13	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	14	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	15	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	16	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	17	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	18	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	19	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	20	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	21	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	22	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	23	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	24	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	25	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	26	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	27	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	28	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	29	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	30	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	31	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	32	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	33	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	34	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	35	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	36	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	37	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	38	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	39	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	40	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	41	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	42	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	43	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	44	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	45	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	46	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	47	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	48	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	49	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	50	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	51	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	52	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	53	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	54	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	55	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	56	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	57	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	58	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	59	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	60	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	61	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	62	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	63	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	64	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	65	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	66	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	67	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	68	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	69	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	70	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	71	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	72	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	73	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	74	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	75	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	76	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	77	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	78	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	79	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	80	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	81	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	82	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	83	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	84	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	85	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	86	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	87	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	88	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	89	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	90	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	91	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	92	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	93	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	94	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	95	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	96	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	97	4	[_ _ ]	moving			      0.73      0.00      0.73      0.00         2      2.00
+LB: veh 1	99	2	[_ _ ]	moving			      0.73      0.00      1.47      0.73         2      2.00
+LB: veh 1	101	1	[_ _ ]	waiting...		      0.00	          1.47      1.47
+
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 2	8	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	9	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	10	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	11	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	12	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	13	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	14	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	15	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	16	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	17	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	18	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	19	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	20	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	21	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	22	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	23	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	24	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	25	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	26	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	27	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 3	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+
+update lower bound with total price for all paxs, global_lower_bound = 1.47 for total (negative) price of 0.00 
+>>> Passenger  1, iteration no. 0,  at node 7 and time 15, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  1, iteration no. 0,  at node 7 and time 16, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  1, iteration no. 0,  at node 7 and time 17, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  1, iteration no. 0,  at node 7 and time 18, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  1, iteration no. 0,  at node 8 and time 22, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  1, iteration no. 0,  at node 8 and time 23, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 9 and time 35, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 9 and time 36, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 9 and time 37, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 9 and time 38, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 10 and time 42, number of visits = 0, the multiplier changes to  -100.00
+>>> Passenger  2, iteration no. 0,  at node 10 and time 43, number of visits = 0, the multiplier changes to  -100.00
+
+Debug: UB iteration 0, Vehicle 1 performing DP: origin 4 -> destination 1
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 1	1	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	2	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	3	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	4	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	5	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	6	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	7	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	8	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	9	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	10	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	11	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	12	4	[_ _ ]	moving			      0.73      0.00      0.73      0.00         2      2.00
+UB: veh 1	14	2	[_ _ ]	!!pickup	(     1)      0.37   -100.00      1.10      0.73         1      0.00
+UB: veh 1	15	7	[_1_ ]	moving			      0.37      0.00      1.47    -98.90         1      0.00
+UB: veh 1	16	2	[_1_ ]	moving			      0.37      0.00      1.83    -98.53         1      1.00
+UB: veh 1	17	5	[_1_ ]	moving			      0.37      0.00      2.20    -98.17         1      1.00
+UB: veh 1	18	6	[_1_ ]	moving			      0.37      0.00      2.57    -97.80         1      1.00
+UB: veh 1	19	3	[_1_ ]	waiting...		      0.00	          2.57    -97.43
+UB: veh 1	20	3	[_1_ ]	waiting...		      0.00	          2.57    -97.43
+UB: veh 1	21	3	[_1_ ]	drop-off	(    -1)      0.37   -100.00      2.93    -97.43         1      0.00
+UB: veh 1	22	8	[_ _ ]	moving			      0.37      0.00      3.30   -197.07         1      0.00
+UB: veh 1	23	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	24	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	25	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	26	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	27	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	28	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	29	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	30	3	[_ _ ]	moving			      0.73      0.00      4.03   -196.70         2      2.00
+UB: veh 1	32	1	[_ _ ]	moving			      0.73      0.00      4.77   -195.97         2      2.00
+UB: veh 1	34	2	[_ _ ]	!!pickup	(     2)      0.37   -100.00      5.13   -195.23         1      0.00
+UB: veh 1	35	9	[_ _2]	moving			      0.37      0.00      5.50   -294.87         1      0.00
+UB: veh 1	36	2	[_ _2]	moving			      0.37      0.00      5.87   -294.50         1      1.00
+UB: veh 1	37	5	[_ _2]	moving			      0.37      0.00      6.23   -294.13         1      1.00
+UB: veh 1	38	6	[_ _2]	moving			      0.37      0.00      6.60   -293.77         1      1.00
+UB: veh 1	39	3	[_ _2]	waiting...		      0.00	          6.60   -293.40
+UB: veh 1	40	3	[_ _2]	waiting...		      0.00	          6.60   -293.40
+UB: veh 1	41	3	[_ _2]	drop-off	(    -2)      0.37   -100.00      6.97   -293.40         1      0.00
+UB: veh 1	42	10	[_ _ ]	moving			      0.37      0.00      7.33   -393.03         1      0.00
+UB: veh 1	43	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	44	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	45	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	46	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	47	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	48	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	49	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	50	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	51	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	52	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	53	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	54	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	55	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	56	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	57	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	58	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	59	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	60	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	61	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	62	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	63	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	64	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	65	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	66	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	67	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	68	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	69	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	70	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	71	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	72	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	73	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	74	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	75	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	76	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	77	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	78	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	79	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	80	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	81	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	82	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	83	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	84	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	85	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	86	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	87	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	88	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	89	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	90	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	91	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	92	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	93	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	94	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	95	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	96	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	97	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	98	3	[_ _ ]	waiting...		      0.00	          7.33   -392.67
+UB: veh 1	99	3	[_ _ ]	moving			      0.73      0.00      8.07   -392.67         2      2.00
+UB: veh 1	101	1	[_ _ ]	waiting...		      0.00	          8.07   -391.93
+
+global_upper_bound for vehicle 1 += 8.07 = 8.07
+!!! LR Iteration 0: Passenger 1 being served by vehicle 1
+!!! LR Iteration 0: Passenger 2 being served by vehicle 1
+
+Debug: UB iteration 0, Vehicle 2 performing DP: origin 2 -> destination 2
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 2	8	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	9	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	10	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	11	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	12	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	13	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	14	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	15	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	16	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	17	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	18	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	19	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	20	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	21	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	22	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	23	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	24	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	25	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	26	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	27	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+global_upper_bound for vehicle 2 += 0.00 = 8.07
+
+Debug: UB iteration 0, Vehicle 3 performing DP: origin 2 -> destination 2
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 3	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+global_upper_bound for vehicle 3 += 0.00 = 8.07
+
+
+******************************************************************************************************************
+Summary: Iteration 0: total operating cost =  8.07
+Summary: Iteration 0, pax 1 -> veh 1
+Summary: Iteration 0, pax 2 -> veh 1
+Summary: Iteration 1: Lower Bound = -99999.00, upper Bound = 8.07, gap = 100007.07, relative_gap = 1239756.74%, # of pax not served = 0
+******************************************************************************************************************
+
+---------------------------BBNodeNo 0-Lagrangian Iteration: 2 ---------------------------
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 1	1	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	2	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	3	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	4	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	5	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	6	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	7	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	8	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	9	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	10	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	11	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 1	12	4	[_ _ ]	moving			      0.73      0.00      0.73      0.00         2      2.00
+LB: veh 1	14	2	[_ _ ]	!!pickup	(     1)      0.37   -100.00    -98.90      0.73         1      0.00
+LB: veh 1	15	7	[_1_ ]	moving			      0.37      0.00    -98.53    -98.90         1      0.00
+LB: veh 1	16	2	[_1_ ]	moving			      0.37      0.00    -98.17    -98.53         1      1.00
+LB: veh 1	17	5	[_1_ ]	moving			      0.37      0.00    -97.80    -98.17         1      1.00
+LB: veh 1	18	6	[_1_ ]	moving			      0.37      0.00    -97.43    -97.80         1      1.00
+LB: veh 1	19	3	[_1_ ]	waiting...		      0.00	        -97.43    -97.43
+LB: veh 1	20	3	[_1_ ]	waiting...		      0.00	        -97.43    -97.43
+LB: veh 1	21	3	[_1_ ]	drop-off	(    -1)      0.37   -100.00   -197.07    -97.43         1      0.00
+LB: veh 1	22	8	[_ _ ]	moving			      0.37      0.00   -196.70   -197.07         1      0.00
+LB: veh 1	23	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	24	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	25	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	26	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	27	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	28	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	29	3	[_ _ ]	waiting...		      0.00	       -196.70   -196.70
+LB: veh 1	30	3	[_ _ ]	moving			      0.73      0.00   -195.97   -196.70         2      2.00
+LB: veh 1	32	1	[_ _ ]	moving			      0.73      0.00   -195.23   -195.97         2      2.00
+LB: veh 1	34	2	[_ _ ]	!!pickup	(     2)      0.37   -100.00   -294.87   -195.23         1      0.00
+LB: veh 1	35	9	[_ _2]	moving			      0.37      0.00   -294.50   -294.87         1      0.00
+LB: veh 1	36	2	[_ _2]	moving			      0.37      0.00   -294.13   -294.50         1      1.00
+LB: veh 1	37	5	[_ _2]	moving			      0.37      0.00   -293.77   -294.13         1      1.00
+LB: veh 1	38	6	[_ _2]	moving			      0.37      0.00   -293.40   -293.77         1      1.00
+LB: veh 1	39	3	[_ _2]	waiting...		      0.00	       -293.40   -293.40
+LB: veh 1	40	3	[_ _2]	waiting...		      0.00	       -293.40   -293.40
+LB: veh 1	41	3	[_ _2]	drop-off	(    -2)      0.37   -100.00   -393.03   -293.40         1      0.00
+LB: veh 1	42	10	[_ _ ]	moving			      0.37      0.00   -392.67   -393.03         1      0.00
+LB: veh 1	43	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	44	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	45	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	46	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	47	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	48	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	49	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	50	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	51	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	52	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	53	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	54	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	55	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	56	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	57	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	58	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	59	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	60	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	61	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	62	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	63	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	64	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	65	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	66	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	67	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	68	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	69	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	70	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	71	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	72	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	73	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	74	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	75	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	76	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	77	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	78	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	79	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	80	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	81	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	82	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	83	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	84	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	85	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	86	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	87	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	88	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	89	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	90	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	91	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	92	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	93	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	94	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	95	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	96	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	97	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	98	3	[_ _ ]	waiting...		      0.00	       -392.67   -392.67
+LB: veh 1	99	3	[_ _ ]	moving			      0.73      0.00   -391.93   -392.67         2      2.00
+LB: veh 1	101	1	[_ _ ]	waiting...		      0.00	       -391.93   -391.93
+
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 2	8	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	9	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	10	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	11	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	12	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	13	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	14	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	15	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	16	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	17	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	18	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	19	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	20	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	21	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	22	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	23	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	24	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	25	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	26	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	27	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 2	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+
+LB: veh no., time, node, state, service code, travel/waiting cost, to_node_cost, cumulative_cost ($), DP_cumulative_cost ($), travel time (interval),travel time (min)
+LB: veh 3	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+LB: veh 3	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+
+update lower bound with total price for all paxs, global_lower_bound = 8.07 for total (negative) price of -400.00 
+>>> Passenger 1,  iteration no., 1 at node 7 and time 15, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 1,  iteration no., 1 at node 7 and time 16, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 1,  iteration no., 1 at node 7 and time 17, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 1,  iteration no., 1 at node 7 and time 18, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 1,  iteration no., 1 at node 8 and time 22, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 1,  iteration no., 1 at node 8 and time 23, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 2,  iteration no., 1 at node 9 and time 35, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 2,  iteration no., 1 at node 9 and time 36, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 2,  iteration no., 1 at node 9 and time 37, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger 2,  iteration no., 1 at node 9 and time 38, number of visits = 1, the multiplier keeps as  -100.00
+>>> Passenger  2, iteration no. 1,  at node 10 and time 42, number of visits = 2, the multiplier changes to  -50.00
+>>> Passenger  2, iteration no. 1,  at node 10 and time 43, number of visits = 2, the multiplier changes to  -50.00
+
+Debug: UB iteration 1, Vehicle 1 performing DP: origin 4 -> destination 1
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 1	1	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	2	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	3	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	4	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	5	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	6	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	7	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	8	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	9	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	10	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	11	4	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 1	12	4	[_ _ ]	moving			      0.73      0.00      0.73      0.00         2      2.00
+UB: veh 1	14	2	[_ _ ]	!!pickup	(     1)      0.37   -100.00      1.10      0.73         1      0.00
+UB: veh 1	15	7	[_1_ ]	moving			      0.37      0.00      1.47    -98.90         1      0.00
+UB: veh 1	16	2	[_1_ ]	moving			      0.37      0.00      1.83    -98.53         1      1.00
+UB: veh 1	17	5	[_1_ ]	moving			      0.37      0.00      2.20    -98.17         1      1.00
+UB: veh 1	18	6	[_1_ ]	moving			      0.37      0.00      2.57    -97.80         1      1.00
+UB: veh 1	19	3	[_1_ ]	waiting...		      0.00	          2.57    -97.43
+UB: veh 1	20	3	[_1_ ]	waiting...		      0.00	          2.57    -97.43
+UB: veh 1	21	3	[_1_ ]	drop-off	(    -1)      0.37   -100.00      2.93    -97.43         1      0.00
+UB: veh 1	22	8	[_ _ ]	moving			      0.37      0.00      3.30   -197.07         1      0.00
+UB: veh 1	23	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	24	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	25	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	26	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	27	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	28	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	29	3	[_ _ ]	waiting...		      0.00	          3.30   -196.70
+UB: veh 1	30	3	[_ _ ]	moving			      0.73      0.00      4.03   -196.70         2      2.00
+UB: veh 1	32	1	[_ _ ]	moving			      0.73      0.00      4.77   -195.97         2      2.00
+UB: veh 1	34	2	[_ _ ]	!!pickup	(     2)      0.37   -100.00      5.13   -195.23         1      0.00
+UB: veh 1	35	9	[_ _2]	moving			      0.37      0.00      5.50   -294.87         1      0.00
+UB: veh 1	36	2	[_ _2]	moving			      0.37      0.00      5.87   -294.50         1      1.00
+UB: veh 1	37	5	[_ _2]	moving			      0.37      0.00      6.23   -294.13         1      1.00
+UB: veh 1	38	6	[_ _2]	moving			      0.37      0.00      6.60   -293.77         1      1.00
+UB: veh 1	39	3	[_ _2]	waiting...		      0.00	          6.60   -293.40
+UB: veh 1	40	3	[_ _2]	waiting...		      0.00	          6.60   -293.40
+UB: veh 1	41	3	[_ _2]	drop-off	(    -2)      0.37    -50.00      6.97   -293.40         1      0.00
+UB: veh 1	42	10	[_ _ ]	moving			      0.37      0.00      7.33   -343.03         1      0.00
+UB: veh 1	43	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	44	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	45	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	46	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	47	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	48	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	49	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	50	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	51	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	52	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	53	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	54	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	55	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	56	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	57	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	58	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	59	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	60	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	61	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	62	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	63	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	64	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	65	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	66	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	67	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	68	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	69	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	70	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	71	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	72	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	73	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	74	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	75	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	76	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	77	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	78	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	79	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	80	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	81	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	82	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	83	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	84	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	85	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	86	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	87	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	88	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	89	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	90	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	91	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	92	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	93	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	94	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	95	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	96	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	97	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	98	3	[_ _ ]	waiting...		      0.00	          7.33   -342.67
+UB: veh 1	99	3	[_ _ ]	moving			      0.73      0.00      8.07   -342.67         2      2.00
+UB: veh 1	101	1	[_ _ ]	waiting...		      0.00	          8.07   -341.93
+
+global_upper_bound for vehicle 1 += 8.07 = 8.07
+!!! LR Iteration 1: Passenger 1 being served by vehicle 1
+!!! LR Iteration 1: Passenger 2 being served by vehicle 1
+
+Debug: UB iteration 1, Vehicle 2 performing DP: origin 2 -> destination 2
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 2	8	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	9	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	10	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	11	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	12	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	13	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	14	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	15	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	16	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	17	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	18	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	19	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	20	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	21	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	22	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	23	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	24	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	25	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	26	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	27	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 2	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+global_upper_bound for vehicle 2 += 0.00 = 8.07
+
+Debug: UB iteration 1, Vehicle 3 performing DP: origin 2 -> destination 2
+UB: time, node, state, service code, travel/waiting cost, to_node_cost,cumulative_cost ($), DP_cumulative_cost ($), travel time(interval), travel time(min)
+UB: veh 3	28	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	29	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	30	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	31	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	32	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	33	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	34	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	35	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	36	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	37	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	38	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	39	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	40	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	41	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	42	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	43	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	44	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	45	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	46	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	47	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	48	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	49	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	50	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	51	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	52	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	53	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	54	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	55	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	56	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	57	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	58	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	59	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	60	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	61	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	62	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	63	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	64	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	65	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	66	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	67	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	68	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	69	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	70	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	71	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	72	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	73	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	74	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	75	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	76	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	77	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	78	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	79	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	80	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	81	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	82	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	83	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	84	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	85	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	86	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	87	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	88	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	89	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	90	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	91	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	92	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	93	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	94	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	95	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	96	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	97	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	98	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	99	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	100	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	101	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	102	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	103	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	104	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	105	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	106	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	107	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	108	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	109	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+UB: veh 3	110	2	[_ _ ]	waiting...		      0.00	          0.00      0.00
+
+global_upper_bound for vehicle 3 += 0.00 = 8.07
+
+
+******************************************************************************************************************
+Summary: Iteration 1: total operating cost =  8.07
+Summary: Iteration 1, pax 1 -> veh 1
+Summary: Iteration 1, pax 2 -> veh 1
+Summary: Iteration 2: Lower Bound = 8.07, upper Bound = 8.07, gap = -0.00, relative_gap = -0.00%, # of pax not served = 0
+******************************************************************************************************************
+
+CPU Running Time = 497 milliseconds

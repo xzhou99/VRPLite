@@ -1,0 +1,6 @@
+!!!   Cal: update upper bound from (node UB)99999 to a new 0
+   Node 0 with LB =-99999 UB= 0
+   Cal: We have a good feasible LB solution! 
+Find an active node 0 with a  UB cost = 0 LB cost = -99999
+
+Optimal Cost is 0 Number of Nodes checked = 0

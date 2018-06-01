@@ -1,0 +1,21 @@
+Network has 0 nodes, 0 links, 0 toll records, 0  passengers, 0 vehicles
+
+
+
+state no. 0: ; outgoing state list:0  
+
+--------------------------- travel time ---------------------------
+
+
+Step 0: Initialization 
+---------------------------BBNodeNo 0-Lagrangian Iteration: 1 ---------------------------
+
+update lower bound with total price for all paxs, global_lower_bound = 0.00 for total (negative) price of 0.00 
+
+
+******************************************************************************************************************
+Summary: Iteration 0: total operating cost =  0.00
+Summary: Iteration 1: Lower Bound = -99999.00, upper Bound = 0.00, gap = 99999.00, relative_gap = 9999900.00%, # of pax not served = 0
+******************************************************************************************************************
+
+CPU Running Time = 16 milliseconds

@@ -1,0 +1,9 @@
+[GUI]
+node_display_size=50.00000
+node_text_display_ratio=4.00000
+load_movement_data=1
+[coordinate_info]
+right_hand_traffic_flag=1.00000
+[movement]
+prohibit_non_specified_movement_on_freeway_and_ramp=1.00000
+hide_non_specified_movement_on_freeway_and_ramp=1.00000

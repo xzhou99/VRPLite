@@ -1,0 +1,14 @@
+number of nodes =,6
+number of links =,13
+number of passengers=, 2
+number of vehicles =,1
+Least Travel Time for Pax,Pax 1,Pax 2,
+,3.00,3.00,
+Modified Vehilce Time,begining, endinging
+Reduced Search Space Perc for Veh,Veh 1,Veh 2,Veh 3,
+,0.00%,0.00%,0.00%,
+,
+BB Node No, Iteration,Lower Bound,Upper Bound,Gap,Relative_gap,pax 1,pax 2,# of pax not served,best_p1,best_p2,best_# of pax not served,price_p1,price_p2,total_price,
+0,1,-99999.000000,8.066669,100007.070313,1239756.738%,1,1,0,1,1,0,100.00,100.00,200.00,
+0,2,8.066711,8.066669,-0.000043,-0.001%,1,1,0,1,1,0,100.00,50.00,150.00,
+CPU Running Time =,497, milliseconds
