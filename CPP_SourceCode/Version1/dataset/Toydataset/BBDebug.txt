@@ -1,0 +1,7 @@
+!!!   Cal: update upper bound from (node UB)99999 to a new 8.06667
+   Node 0 with LB =8.06671 UB= 8.06667
+   Cal: We have a good feasible LB solution! 
+Find an active node 0 with a  UB cost = 8.06667 LB cost = 8.06671
+   cut node 0 as LBCost = 8.06671 > current best upper bound 8.06667
+
+Optimal Cost is 8.06667 Number of Nodes checked = 1

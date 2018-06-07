@@ -1,0 +1,6 @@
+iteration_no,agent_id,agent_type,virtual_vehicle,path_node_sequence,path_time_sequence,path_pax_sequence,path_state_sequence,
+0,p1,p,pax,2;3,15;25
+0,p2,p,pax,2;3,35;45
+2,v1,v,physical,4;2;2;5;3;3;1;2;2;5;3;3;1;,12;14;16;17;21;30;32;34;36;37;41;99;101;,1;2;,
+2,v,v,virtual,2;,110;,,
+2,v,v,virtual,2;,110;,,

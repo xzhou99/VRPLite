@@ -33,6 +33,7 @@ FILE* g_pFileOutputLog = NULL;
 FILE* g_pFile_Output_paxprofitLog = NULL;
 FILE* g_pFile_PathLog = NULL;
 
+FILE* g_pFile_Vehicle_Path_PassengerLog = NULL;
 
 std::map<int, int> g_internal_node_no_map;
 std::map<int, int> g_external_node_id_map;
@@ -43,19 +44,19 @@ std::map<int, string> g_external_vehicle_id_map;
 
 int g_number_of_threads = 4;
 // passenger info in Node as pickup and dropoff node are all passengers 
-int g_node_passenger_id[_MAX_NUMBER_OF_NODES]; 
+int g_node_passenger_id[_MAX_NUMBER_OF_NODES];
 int g_node_type[_MAX_NUMBER_OF_NODES];  //key nodeid; 1: pick up, 2: drop off
 int g_node_timestamp[_MAX_NUMBER_OF_NODES];  //key nodeid;, values type 1: pick up:ready time, 2: order time
 float g_node_baseprofit[_MAX_NUMBER_OF_NODES];  // type 2; = 0
 //the number of outbound nodes. key nodeid;, values type 1: pick up:ready time, 2: order time
-int g_outbound_node_size[_MAX_NUMBER_OF_NODES];  
+int g_outbound_node_size[_MAX_NUMBER_OF_NODES];
 std::map<int, int> pax_id_to_seq_no_map;
 
 
 float g_passenger_base_profit[_MAX_NUMBER_OF_PASSENGERS] = { -7 };
 float local_vehicle_passenger_additional_profit[_MAX_NUMBER_OF_VEHICLES][_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 
-float g_passenger_order_time[_MAX_NUMBER_OF_PASSENGERS] = { 0};
+float g_passenger_order_time[_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 //used in profit(LR multipliers) update: summation of variable y
 int g_passenger_number_of_visits[_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 int g_passenger_vehicle_visit_flag[_MAX_NUMBER_OF_PASSENGERS][_MAX_NUMBER_OF_VEHICLES] = { 0 };
@@ -122,6 +123,8 @@ int g_number_of_links = 0;
 int g_number_of_nodes = 0;
 int g_number_of_physical_nodes = 0;
 int g_number_of_time_intervals = 10;
+
+int g_updated_number_of_time_intervals = 0;
 
 int g_number_of_vehicles = 0;
 
@@ -353,19 +356,19 @@ public:
 				LabelCost -= g_passenger_base_profit[passenger_id];//LBd
 
 				 // the waiting cost of passenger is 0.3
-				LabelCost += 0.3*max(0,(passenger_service_begin_time[passenger_id] - g_passenger_order_time[passenger_id]));
-				PrimalLabelCost += 0.3*max(0,(passenger_service_begin_time[passenger_id] - g_passenger_order_time[passenger_id]));
+				LabelCost += 0.3*max(0, (passenger_service_begin_time[passenger_id] - g_passenger_order_time[passenger_id]));
+				PrimalLabelCost += 0.3*max(0, (passenger_service_begin_time[passenger_id] - g_passenger_order_time[passenger_id]));
 			}
 		}
 
 		// total travel time
-		LabelCost += m_visit_time_sequence[m_visit_time_sequence.size()-1] - g_vehicle_departure_time_beginning[1];
+		LabelCost += m_visit_time_sequence[m_visit_time_sequence.size() - 1] - g_vehicle_departure_time_beginning[1];
 		PrimalLabelCost += m_visit_time_sequence[m_visit_time_sequence.size() - 1] - g_vehicle_departure_time_beginning[1];
 
 
 		// the difference between waiting cost and transportation cost
-		
-		for (int it = 1; it <m_visit_sequence.size(); it++)
+
+		for (int it = 1; it < m_visit_sequence.size(); it++)
 		{
 			if (m_visit_sequence[it - 1] == m_visit_sequence[it]) //waiting arc
 			{
@@ -427,10 +430,10 @@ public:
 
 class C_time_indexed_state_vector
 {
-	public:
+public:
 	int current_time;
 
-	
+
 	std::vector<CVSState> m_VSStateVector;
 	//state string 1_1_1,state index 
 	std::map<std::string, int> m_state_map;
@@ -444,21 +447,21 @@ class C_time_indexed_state_vector
 
 	int m_find_state_index(std::string string_key)
 	{
-		
+
 		if (m_state_map.find(string_key) != m_state_map.end())
 		{
 			return m_state_map[string_key];
 		}
 		else
 			return -1;  // not found
-		
+
 	}
 
 	void update_state(CVSState new_element)
 	{
 		std::string string_key = new_element.generate_string_key();//if it is new, string is n100, no state index
 		int state_index = m_find_state_index(string_key);
-		
+
 		if (state_index == -1)  // no such state at this time
 		{
 			// add new state
@@ -480,18 +483,18 @@ class C_time_indexed_state_vector
 	void Sort()
 	{
 		std::sort(m_VSStateVector.begin(), m_VSStateVector.end());
-	
+
 		m_state_map.clear(); // invalid
 	}
 
 	void SortAndCleanEndingState(int BestKValue)
-	{				
-		if(m_VSStateVector.size() > 2* BestKValue)
-		{ 
-		std::sort(m_VSStateVector.begin(), m_VSStateVector.end());
+	{
+		if (m_VSStateVector.size() > 2 * BestKValue)
+		{
+			std::sort(m_VSStateVector.begin(), m_VSStateVector.end());
 
-		m_state_map.clear(); // invalid
-		m_VSStateVector.erase(m_VSStateVector.begin()+ BestKValue, m_VSStateVector.end());
+			m_state_map.clear(); // invalid
+			m_VSStateVector.erase(m_VSStateVector.begin() + BestKValue, m_VSStateVector.end());
 		}
 	}
 
@@ -506,9 +509,9 @@ class C_time_indexed_state_vector
 			//0 means least cost 
 			m_VSStateVector[0].CountPassengerNumberOfVisits(vehicle_id);
 			if (DualPriceFlag == 1)
-			{ 
+			{
 				fprintf(g_pFileDebugLog, "Dual \t{{%s}}; Label Cost %f\n ",
-					state_str.c_str(), m_VSStateVector[0].LabelCost );
+					state_str.c_str(), m_VSStateVector[0].LabelCost);
 			}
 			else
 			{
@@ -516,11 +519,11 @@ class C_time_indexed_state_vector
 					state_str.c_str(), m_VSStateVector[0].PrimalLabelCost);
 			}
 
-			if(DualPriceFlag ==1)
+			if (DualPriceFlag == 1)
 				return m_VSStateVector[0].LabelCost;
 			else
 				return m_VSStateVector[0].PrimalLabelCost;
-			
+
 		}
 		else
 			return _MAX_LABEL_COST;
@@ -529,15 +532,15 @@ class C_time_indexed_state_vector
 };
 
 //vehicle state at time t
-C_time_indexed_state_vector g_time_dependent_state_vector[_MAX_NUMBER_OF_VEHICLES][_MAX_NUMBER_OF_TIME_INTERVALS];
+C_time_indexed_state_vector g_time_dependent_state_vector[_MAX_NUMBER_OF_VEHICLES][_MAX_NUMBER_OF_NODES][_MAX_NUMBER_OF_TIME_INTERVALS];
 
 // for collecting the final feasible states accesible to the depot
-C_time_indexed_state_vector g_ending_state_vector[_MAX_NUMBER_OF_VEHICLES];  
+C_time_indexed_state_vector g_ending_state_vector[_MAX_NUMBER_OF_VEHICLES];
 
 
 float g_optimal_time_dependenet_dynamic_programming(
 	int vehicle_id,
-	int origin_node, 
+	int origin_node,
 	int departure_time_beginning,
 	int departure_time_ending,
 	int destination_node,
@@ -546,7 +549,7 @@ float g_optimal_time_dependenet_dynamic_programming(
 	int vehicle_capacity,
 	//maximum choose
 	int BestKSize,
-	int DualCostFlag )
+	int DualCostFlag)
 	// time-dependent label correcting algorithm with double queue implementation
 {
 
@@ -560,188 +563,197 @@ float g_optimal_time_dependenet_dynamic_programming(
 		g_passenger_vehicle_visit_flag[p][vehicle_id] = 0;
 	}
 	//step 2: Initialization for origin node at the preferred departure time, at departure time
-	for (int t = departure_time_beginning; t <= arrival_time_ending; t++)  //first loop: time
+	for (int i = 0; i < g_number_of_nodes; i++)
 	{
-		g_time_dependent_state_vector[vehicle_id][t].Reset();
+		for (int t = departure_time_beginning; t <= arrival_time_ending; t++)  //first loop: time
+
+		{
+			g_time_dependent_state_vector[vehicle_id][i][t].Reset();
+		}
+
 	}
 	g_ending_state_vector[vehicle_id].Reset();
+
 	CVSState element;
 
 	element.current_node_id = origin_node;
-	g_time_dependent_state_vector[vehicle_id][departure_time_beginning].update_state(element);
+	g_time_dependent_state_vector[vehicle_id][origin_node][departure_time_beginning].update_state(element);
 
 
 	// step 3: //dynamic programming
 	for (int t = departure_time_beginning; t <= arrival_time_ending; t++)  //first loop: time
 	{
-		// step 1: sort m_VSStateVector by labelCost for scan best k elements in step2 
-		g_time_dependent_state_vector[vehicle_id][t].Sort();
-		
-		// step 2: scan the best k elements
-		for (int w_index = 0; w_index < min(BestKSize, g_time_dependent_state_vector[vehicle_id][t].m_VSStateVector.size()); w_index++)
+
+		for (int n = 0; n < g_number_of_nodes; n++)
 		{
-			CVSState* pElement = &(g_time_dependent_state_vector[vehicle_id][t].m_VSStateVector[w_index]);
-
-			int from_node = pElement->current_node_id;
-			
+			// step 1: sort m_VSStateVector by labelCost for scan best k elements in step2 
+			g_time_dependent_state_vector[vehicle_id][n][t].Sort();
 
 
-			// step 2.1 link from node to toNode
-			for (int i = 0; i < g_outbound_node_size[from_node]; i++)
+			// step 2: scan the best k elements
+			for (int w_index = 0; w_index < min(BestKSize, g_time_dependent_state_vector[vehicle_id][n][t].m_VSStateVector.size()); w_index++)
 			{
-				int to_node = g_outbound_node_id[from_node][i];
-				int to_node_passenger_id = g_node_passenger_id[to_node];
-				int to_node_type = g_node_type[to_node];
-				int link_no = g_outbound_link_no[from_node][i];
-				int next_time = max(g_node_timestamp[to_node], t + g_link_free_flow_travel_time[link_no]);
+				CVSState* pElement = &(g_time_dependent_state_vector[vehicle_id][n][t].m_VSStateVector[w_index]);
 
-				// step 2.2. check feasibility of node type with the current element
-				if (next_time <= arrival_time_ending )
-				{		
-					
-					if (to_node_passenger_id >= 1 && g_activity_node_starting_time[to_node] >= 0 && g_activity_node_ending_time[to_node] >= 0 &&
-						g_vehicle_passenger_visit_allowed_flag[vehicle_id][to_node_passenger_id] == 1)
-					{// address the passengers' state transitions
-					 // passegner activity node: origin or destination
+				int from_node = pElement->current_node_id;//current_node_id is not node n?
 
-						// skip scanning when the origin/destination nodes arrival time is out of time window
-						if ( next_time > g_activity_node_ending_time[to_node])
-						{
-							continue;
-						}
-						//feasible state transitions 
-						if ((to_node_type == 1 && pElement->GetPassengerServiceState(to_node_passenger_id) == 0)//pickup
-							|| (to_node_type == 2 && pElement->GetPassengerServiceState(to_node_passenger_id) == 1))  // delivery)
-						{//origin state is 0, then to 1; origin state is 1, then to 2.
-							// step 2.3 label cost updating inside this function 
-							
-							// for pickup process
-							if (to_node_type == 1)
+				// step 2.1 link from node to toNode
+				for (int i = 0; i < g_outbound_node_size[from_node]; i++)
+				{
+					int to_node = g_outbound_node_id[from_node][i];
+					int to_node_passenger_id = g_node_passenger_id[to_node];
+					int to_node_type = g_node_type[to_node];
+					int link_no = g_outbound_link_no[from_node][i];
+					int next_time = max(g_node_timestamp[to_node], t + g_link_free_flow_travel_time[link_no]);
+
+					// step 2.2. check feasibility of node type with the current element
+					if (next_time <= arrival_time_ending)
+					{
+
+						if (to_node_passenger_id >= 1 && g_activity_node_starting_time[to_node] >= 0 && g_activity_node_ending_time[to_node] >= 0 &&
+							g_vehicle_passenger_visit_allowed_flag[vehicle_id][to_node_passenger_id] == 1)
+						{// address the passengers' state transitions
+						 // passegner activity node: origin or destination
+
+							// skip scanning when the origin/destination nodes arrival time is out of time window
+							if (next_time > g_activity_node_ending_time[to_node])
 							{
-								// skip pickup when the vehicle if on its capacity
-								if (g_time_dependent_state_vector[vehicle_id][t].m_VSStateVector[w_index].m_vehicle_capacity >= vehicle_capacity)
-									continue;
-								//waiting 
-								if (next_time < g_activity_node_starting_time[to_node])
-								{
-									CVSState new_element;
-									new_element.Copy(pElement);
-									new_element.MarkCarryingService(to_node_passenger_id, to_node_type, 0);
-
-									new_element.current_node_id = to_node;
-									new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
-
-									//for arriving at activity node and begin wait
-									new_element.m_visit_time_sequence.push_back(next_time);
-									new_element.m_visit_sequence.push_back(to_node);
-
-									//for wait until activity node's depature time
-									new_element.m_visit_time_sequence.push_back(g_activity_node_starting_time[to_node]);
-									new_element.m_visit_sequence.push_back(to_node);
-
-									new_element.CalculateLabelCost(vehicle_id);
-
-									int link_no = g_outbound_link_no[from_node][i];
-
-									g_time_dependent_state_vector[vehicle_id][g_activity_node_starting_time[to_node]].update_state(new_element);
-									continue;
-								}
+								continue;
 							}
-                            if (to_node_type == 2)
-							{		
-								//waiting 
-								if (next_time < g_activity_node_starting_time[to_node])
+							//feasible state transitions 
+							if ((to_node_type == 1 && pElement->GetPassengerServiceState(to_node_passenger_id) == 0)//pickup
+								|| (to_node_type == 2 && pElement->GetPassengerServiceState(to_node_passenger_id) == 1))  // delivery)
+							{//origin state is 0, then to 1; origin state is 1, then to 2.
+								// step 2.3 label cost updating inside this function 
+
+								// for pickup process
+								if (to_node_type == 1)
 								{
-									CVSState new_element;
-									new_element.Copy(pElement);
-									new_element.MarkCarryingService(to_node_passenger_id, to_node_type, g_activity_node_starting_time[to_node]);
+									// skip pickup when the vehicle if on its capacity
+									if (g_time_dependent_state_vector[vehicle_id][n][t].m_VSStateVector[w_index].m_vehicle_capacity >= vehicle_capacity)// Tony: to_node? or from_node?
+										continue;
+									//waiting 
+									if (next_time < g_activity_node_starting_time[to_node])
+									{
+										CVSState new_element;
+										new_element.Copy(pElement);
+										new_element.MarkCarryingService(to_node_passenger_id, to_node_type, 0);
 
-									new_element.current_node_id = to_node;
-									new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
-									
-									//for arriving at activity node and begin wait
-									new_element.m_visit_time_sequence.push_back(next_time);
-									new_element.m_visit_sequence.push_back(to_node);
-									//for wait until activity node's depature time
-									new_element.m_visit_time_sequence.push_back(g_activity_node_starting_time[to_node]);
-									new_element.m_visit_sequence.push_back(to_node);
+										new_element.current_node_id = to_node;
+										new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
 
-									new_element.CalculateLabelCost(vehicle_id);
+										//for arriving at activity node and begin wait
+										new_element.m_visit_time_sequence.push_back(next_time);
+										new_element.m_visit_sequence.push_back(to_node);
 
-									int link_no = g_outbound_link_no[from_node][i];
+										//for wait until activity node's depature time
+										new_element.m_visit_time_sequence.push_back(g_activity_node_starting_time[to_node]);
+										new_element.m_visit_sequence.push_back(to_node);
 
-									g_time_dependent_state_vector[vehicle_id][g_activity_node_starting_time[to_node]].update_state(new_element);
-									continue;
+										new_element.CalculateLabelCost(vehicle_id);
+
+										int link_no = g_outbound_link_no[from_node][i];
+
+										g_time_dependent_state_vector[vehicle_id][to_node][g_activity_node_starting_time[to_node]].update_state(new_element);
+										continue;
+									}
 								}
+								if (to_node_type == 2)
+								{
+									//waiting 
+									if (next_time < g_activity_node_starting_time[to_node])
+									{
+										CVSState new_element;
+										new_element.Copy(pElement);
+										new_element.MarkCarryingService(to_node_passenger_id, to_node_type, g_activity_node_starting_time[to_node]);
 
+										new_element.current_node_id = to_node;
+										new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
+
+										//for arriving at activity node and begin wait
+										new_element.m_visit_time_sequence.push_back(next_time);
+										new_element.m_visit_sequence.push_back(to_node);
+										//for wait until activity node's depature time
+										new_element.m_visit_time_sequence.push_back(g_activity_node_starting_time[to_node]);
+										new_element.m_visit_sequence.push_back(to_node);
+
+										new_element.CalculateLabelCost(vehicle_id);
+
+										int link_no = g_outbound_link_no[from_node][i];
+
+										g_time_dependent_state_vector[vehicle_id][to_node][g_activity_node_starting_time[to_node]].update_state(new_element);
+										continue;
+									}
+
+								}
+								// do not need waiting
+								CVSState new_element;
+								new_element.Copy(pElement);
+								new_element.MarkCarryingService(to_node_passenger_id, to_node_type, next_time);
+
+								new_element.current_node_id = to_node;
+								new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
+								new_element.m_visit_time_sequence.push_back(next_time);
+								new_element.m_visit_sequence.push_back(to_node);
+
+								new_element.CalculateLabelCost(vehicle_id);
+
+								int link_no = g_outbound_link_no[from_node][i];
+
+								g_time_dependent_state_vector[vehicle_id][to_node][next_time].update_state(new_element);
 							}
-							// do not need waiting
+						}
+
+						else if (to_node_passenger_id < 1 && to_node_type == 0)
+						{
 							CVSState new_element;
 							new_element.Copy(pElement);
-							new_element.MarkCarryingService(to_node_passenger_id, to_node_type, next_time);
 
 							new_element.current_node_id = to_node;
-							new_element.passenger_service_state[to_node_passenger_id] = to_node_type;
 							new_element.m_visit_time_sequence.push_back(next_time);
 							new_element.m_visit_sequence.push_back(to_node);
-							
 							new_element.CalculateLabelCost(vehicle_id);
-						
+
 							int link_no = g_outbound_link_no[from_node][i];
+							g_time_dependent_state_vector[vehicle_id][to_node][next_time].update_state(new_element);
+						}
+						else if (to_node == destination_node)
+						{
+							CVSState new_element;
+							new_element.Copy(pElement);
+							//time window of destination_node
+							if (next_time < arrival_time_beginning)
+							{
+								//for arriving at activity node and begin wait
+								pElement->m_visit_time_sequence.push_back(next_time);
+								pElement->m_visit_sequence.push_back(to_node);
+								//for wait until activity node's depature time
+								pElement->m_visit_time_sequence.push_back(arrival_time_beginning);
+								pElement->m_visit_sequence.push_back(to_node);
+								pElement->CalculateLabelCost(vehicle_id);
 
-							g_time_dependent_state_vector[vehicle_id][next_time].update_state(new_element);
 							}
+							else
+							{
+								new_element.m_visit_time_sequence.push_back(next_time);
+								new_element.m_visit_sequence.push_back(to_node);
+								new_element.CalculateLabelCost(vehicle_id);
+								pElement->m_visit_time_sequence.push_back(next_time);
+								pElement->m_visit_sequence.push_back(to_node);
+								pElement->CalculateLabelCost(vehicle_id);
+							}
+							g_ending_state_vector[vehicle_id].update_state(*pElement);
+							g_ending_state_vector[vehicle_id].SortAndCleanEndingState(BestKSize);
 						}
-
-					else if(to_node_passenger_id < 1&& to_node_type==0)
-					{
-						CVSState new_element;
-						new_element.Copy(pElement);
-
-						new_element.current_node_id = to_node;
-						new_element.m_visit_time_sequence.push_back(next_time);
-						new_element.m_visit_sequence.push_back(to_node);
-						new_element.CalculateLabelCost(vehicle_id);
-
-						int link_no = g_outbound_link_no[from_node][i];
-						g_time_dependent_state_vector[vehicle_id][next_time].update_state(new_element);
 					}
-					else if (to_node == destination_node)
-					{
-						CVSState new_element;
-						new_element.Copy(pElement);
-						//time window of destination_node
-						if (next_time < arrival_time_beginning)
-						{
-							//for arriving at activity node and begin wait
-							pElement->m_visit_time_sequence.push_back(next_time);
-							pElement->m_visit_sequence.push_back(to_node);
-							//for wait until activity node's depature time
-							pElement->m_visit_time_sequence.push_back(arrival_time_beginning);
-							pElement->m_visit_sequence.push_back(to_node);
-							pElement->CalculateLabelCost(vehicle_id);
-	
-						}
-						else
-						{
-							new_element.m_visit_time_sequence.push_back(next_time);
-							new_element.m_visit_sequence.push_back(to_node);
-							new_element.CalculateLabelCost(vehicle_id);
-							pElement->m_visit_time_sequence.push_back(next_time);
-							pElement->m_visit_sequence.push_back(to_node);
-							pElement->CalculateLabelCost(vehicle_id);
-						}
-						g_ending_state_vector[vehicle_id].update_state(*pElement);
-						g_ending_state_vector[vehicle_id].SortAndCleanEndingState(BestKSize);
-					}
+
 				}
-
 			}
-		}
-		} // for all time t
+		}  // for all nodes
+	} // for all time t
 
-	
-	// no backf
+
+// no backf
 	return g_ending_state_vector[vehicle_id].GetBestValue(DualCostFlag, vehicle_id);
 }
 
@@ -797,7 +809,7 @@ void g_ReadInputData()
 			parser.GetValueByFieldName("y", Y);
 
 			g_number_of_nodes++;
-			if (g_number_of_nodes % 1000 ==0)
+			if (g_number_of_nodes % 1000 == 0)
 				cout << "reading " << g_number_of_nodes << " nodes.. " << endl;
 		}
 
@@ -822,13 +834,13 @@ void g_ReadInputData()
 			if (parser.GetValueByFieldName("to_node_id", to_node_id) == false)
 				continue;
 
-			if (from_node_id <= 0 )
+			if (from_node_id <= 0)
 			{
 				cout << "from_node_id " << from_node_id << " is out of range" << endl;
 				g_ProgramStop();
 			}
 
-			if (to_node_id <= 0 )
+			if (to_node_id <= 0)
 			{
 				cout << "to_node_id " << to_node_id << " is out of range" << endl;
 				g_ProgramStop();
@@ -915,7 +927,7 @@ void g_ReadInputData()
 					speed = 25;
 
 				travel_time = link_length * 60 / max(1, speed);
-				
+
 				parser.GetValueByFieldName("jam_density", jam_density);
 
 				if (travel_time > 100)
@@ -929,7 +941,7 @@ void g_ReadInputData()
 
 				g_link_free_flow_travel_time[g_number_of_links] = max(1, travel_time + 0.5);   // at least 1 min, round to nearest integers
 				g_link_free_flow_travel_time_float_value[g_number_of_links] = travel_time;
-				
+
 				g_link_link_length[g_number_of_links] = link_length;
 				g_link_number_of_lanes[g_number_of_links] = number_of_lanes;
 				g_link_mode_code[g_number_of_links] = mode_code;
@@ -1007,6 +1019,8 @@ void g_ReadInputData()
 				g_passenger_arrival_time_ending[pax_no] = max(g_passenger_arrival_time_ending[pax_no], g_passenger_arrival_time_beginning[pax_no]);
 				g_number_of_time_intervals = max(g_passenger_arrival_time_ending[pax_no] + 10, g_number_of_time_intervals);
 
+				g_number_of_time_intervals = min(g_number_of_time_intervals, _MAX_NUMBER_OF_TIME_INTERVALS);
+
 				//add virtual node and link for passenger
 				int new_artifical_pasenger_origin_id = g_add_new_node_origin(pax_no, g_passenger_departure_time_beginning[pax_no], g_passenger_departure_time_ending[pax_no]);
 				g_add_new_link(g_passenger_origin_node[pax_no], new_artifical_pasenger_origin_id, pax_no);  // pick up link
@@ -1080,11 +1094,11 @@ void g_ReadInputData()
 
 					//add virtual node and link for vehicle
 					int new_artifical_vehicle_origin_id = g_add_new_node(vehicle_no, g_vehicle_departure_time_beginning[vehicle_no], g_vehicle_departure_time_ending[vehicle_no]);
-					g_add_new_link(new_artifical_vehicle_origin_id, g_vehicle_origin_node[vehicle_no],100);
+					g_add_new_link(new_artifical_vehicle_origin_id, g_vehicle_origin_node[vehicle_no], 100);
 					g_vehicle_depot_origin_node[vehicle_no] = g_number_of_nodes;
 
 					int new_artifical_vehicle_destination_id = g_add_new_node(vehicle_no, g_vehicle_arrival_time_beginning[vehicle_no], g_vehicle_arrival_time_ending[vehicle_no]);
-					g_add_new_link(g_vehicle_destination_node[vehicle_no], new_artifical_vehicle_destination_id,101);  // delivery link
+					g_add_new_link(g_vehicle_destination_node[vehicle_no], new_artifical_vehicle_destination_id, 101);  // delivery link
 					g_vehicle_depot_destination_node[vehicle_no] = g_number_of_nodes;
 
 					g_activity_node_flag[g_vehicle_depot_origin_node[vehicle_no]] = 1;
@@ -1110,8 +1124,10 @@ void g_ReadInputData()
 
 				}
 				g_number_of_vehicles++;
+				g_updated_number_of_time_intervals = g_number_of_time_intervals;
 			}
 		}
+		
 		parser.CloseCSVFile();
 	}
 
@@ -1132,11 +1148,11 @@ void g_ReadInputData()
 		if (g_link_service_code[link] != 0)
 		{
 
-		fprintf(g_pFileDebugLog, "link no.%d,  %d->%d, service code %d\n",
-			link + 1,
-			from_node,
-			to_node,
-			g_link_service_code[link]);
+			fprintf(g_pFileDebugLog, "link no.%d,  %d->%d, service code %d\n",
+				link + 1,
+				from_node,
+				to_node,
+				g_link_service_code[link]);
 		}
 	}
 
@@ -1155,7 +1171,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 	float g_best_upper_bound = 99999;
 	float g_best_lower_bound = -99999;
 
-	g_number_of_LR_iterations = 10;
+	g_number_of_LR_iterations = 1;
 	float StepSize = 1;
 
 	//loop for each LR iteration
@@ -1163,7 +1179,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 	{
 		if ((LR_iteration + 1) % 5 == 0)
 			std::cout << LR_iteration + 1 << "/" << g_number_of_LR_iterations << std::endl;
-		
+
 		// reset the vertex visit count
 		double LR_global_lower_bound = 0;
 
@@ -1178,7 +1194,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 
 		for (int v = 1; v <= g_number_of_vehicles; v++)
 		{
-			
+
 			for (int p = 1; p <= g_number_of_passengers; p++)
 			{
 				g_vehicle_passenger_visit_allowed_flag[v][p] = 1;
@@ -1187,7 +1203,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 			}
 		}
 
-//#pragma omp parallel for
+		//#pragma omp parallel for
 		for (int v = 1; v <= g_number_of_vehicles; v++)
 		{
 			fprintf(g_pFileDebugLog,
@@ -1208,18 +1224,19 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 					g_vehicle_arrival_time_beginning[v],
 					g_vehicle_arrival_time_ending[v],
 					g_vehicle_capacity[v],
-					500,
+					2,
 					1);
+
 			if (path_cost_by_vehicle_v < _MAX_LABEL_COST)
 				LR_global_lower_bound += path_cost_by_vehicle_v;
 
 			//fprintf(g_pFileDebugLog, "LR_global_lower_bound += path_cost_by_vehicle_v, %f, %f", path_cost_by_vehicle_v, LR_global_lower_bound);
 
-		} 
-		  
+		}
+
 		for (int p = 1; p <= g_number_of_passengers; p++)
 		{
-			
+
 			LR_global_lower_bound += g_passenger_base_profit[p];
 
 		}
@@ -1227,24 +1244,21 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 		fprintf(g_pFileDebugLog, "LR_global_lower_bound = , %f", LR_global_lower_bound);
 		g_best_lower_bound = max(g_best_lower_bound, LR_global_lower_bound);  // keep the best lower bound till current iteration
 
-		
-		
-
 		fprintf(g_pFile_Output_paxprofitLog, "\n%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,",
 			LR_iteration, StepSize, g_passenger_base_profit[1],
 			g_passenger_base_profit[2], g_passenger_base_profit[3], g_passenger_base_profit[4]
 			, g_passenger_base_profit[5], g_passenger_base_profit[6], g_passenger_base_profit[7]
 			, g_passenger_base_profit[8], g_passenger_base_profit[9], g_passenger_base_profit[10], g_best_lower_bound);
 
-
-		
 		//output vehicle's path_node_seq and path_time_seq for each iteration of lower bound
 		fprintf(g_pFile_OutputAgentLog, "\n%d,%f,",
-			 LR_iteration, StepSize);
+			LR_iteration, StepSize);
 		for (int j = 1; j <= g_number_of_vehicles; j++)
 		{
 			if (g_ending_state_vector[j].m_VSStateVector.size() == 0)
 				continue;
+
+			cout << "vehicle number = " << j << endl;
 
 			//output vehicle passing node sequence
 			fprintf(g_pFile_OutputAgentLog, "%d;", g_vehicle_depot_origin_node[j]);
@@ -1275,7 +1289,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 		//update step size for the next LR_iteration
 		for (int p = 1; p <= g_number_of_passengers; p++)
 		{
-			StepSize = 1 / (LR_iteration  + 1.0f);
+			StepSize = 1 / (LR_iteration + 1.0f);
 			g_minimum_subgradient_step_size = 0.1;
 			if (StepSize < g_minimum_subgradient_step_size)  //1.3.1 keep the minimum step size
 			{
@@ -1286,10 +1300,9 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 			g_passenger_base_profit[p] -= constant*StepSize * (g_passenger_number_of_visits[p] - 1);
 		}
 
-
 	}
 	// end of LR iterations
-	
+
 	// generate upper bound
 	fprintf(g_pFileDebugLog, "\nGenerate upper bound\n");
 
@@ -1329,18 +1342,21 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 			if (g_passenger_number_of_visits[p] == 0)
 				LR_global_upper_bound += 30;
 		}
-		
 
-		fprintf(g_pFileDebugLog, "LR_global_upper_bound += path_cost_by_vehicle_%d, %f, %f",v, path_cost_by_vehicle_v, LR_global_upper_bound);
 
-		for (int i = 0; i < _MAX_NUMBER_OF_TIME_INTERVALS; i++)
+		fprintf(g_pFileDebugLog, "LR_global_upper_bound += path_cost_by_vehicle_%d, %f, %f", v, path_cost_by_vehicle_v, LR_global_upper_bound);
+
+		for (int t = 0; t < _MAX_NUMBER_OF_TIME_INTERVALS; t++)
 		{
-			for (int j = 0; j < g_time_dependent_state_vector[v][i].m_VSStateVector.size(); j++)
+			for (int i = 0; i < g_number_of_nodes; i++)
 			{
-				string temp = g_time_dependent_state_vector[v][i].m_VSStateVector[j].generate_string_key();
-				fprintf(g_pFile_PathLog, "\n%d,%d,%s",
-					 v, i, g_time_dependent_state_vector[v][i].m_VSStateVector[j].generate_string_key().c_str());
+				for (int j = 0; j < g_time_dependent_state_vector[v][i][t].m_VSStateVector.size(); j++)
+				{
+					string temp = g_time_dependent_state_vector[v][i][t].m_VSStateVector[j].generate_string_key();
+					fprintf(g_pFile_PathLog, "\n%d,%d,%d,%s",
+						v, i, t, g_time_dependent_state_vector[v][i][t].m_VSStateVector[j].generate_string_key().c_str());
 
+				}
 			}
 		}
 		if (v < g_number_of_vehicles)  // mark the passsengers have been visited
@@ -1350,8 +1366,8 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 				if (g_passenger_number_of_visits[p] >= 1)
 				{
 					g_vehicle_passenger_visit_allowed_flag[v + 1][p] = 0;  // not allowed to visit
-					fprintf(g_pFileDebugLog, "\nupper bound generation, for vehicle %d, pax %d is not allowed or no needed to serve", 
-						v+1,p);
+					fprintf(g_pFileDebugLog, "\nupper bound generation, for vehicle %d, pax %d is not allowed or no needed to serve",
+						v + 1, p);
 
 				}
 			}
@@ -1360,14 +1376,12 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 
 	g_best_upper_bound = min(g_best_upper_bound, LR_global_upper_bound);  // keep the best lower bound till current iteration
 
-
 	CTimeSpan ctime = CTime::GetCurrentTime() - g_SolutionStartTime;
 	cout << "\nComputational time:," << ctime.GetTotalSeconds() << endl;
 
-
 	//output vehicle's path_node_seq and path_time_seq for Upperbound
 	fprintf(g_pFile_OutputAgentLog, "\n%s,%s,",
-		 "Upperbound:"," ");
+		"Upperbound:", " ");
 	for (int j = 1; j <= g_number_of_vehicles; j++)
 	{
 		if (g_ending_state_vector[j].m_VSStateVector.size() == 0)
@@ -1398,6 +1412,75 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 		fprintf(g_pFile_OutputAgentLog, ",");
 	}
 
+	//output the vehicle path matrix information
+	fprintf(g_pFile_Vehicle_Path_PassengerLog, "%s,%s,%s,%s,%s,%s,%s\n", "vehicle_id", "path_id", "node_id", "visit_time", "passenger_id", "link_id", "path_cost");
+
+	for (int j = 1; j <= g_number_of_vehicles; j++)
+	{
+		if (g_ending_state_vector[j].m_VSStateVector.size() == 0)
+			continue;
+
+		//output vehicle passing node sequence
+		int temp_pax_id = -1;
+		int temp_link_id = -1;
+		int temp_from_node_no = 0;
+
+		fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_vehicle_depot_origin_node[j], g_vehicle_departure_time_beginning[j], temp_pax_id, temp_link_id, g_best_upper_bound);
+
+		if (g_node_type[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0]] == 0) //physical nodes
+		{
+			fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_external_node_id_map[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0]],
+				g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[0], -1, -1, g_best_upper_bound);
+		}
+		else if (g_node_type[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0]] == 3) //vehicle depot
+		{
+			fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0],
+				g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[0], -1, -1
+				, g_best_upper_bound);
+		}
+		else
+		{
+			fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0],
+				g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[0], g_node_passenger_id[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[0]], -1
+				, g_best_upper_bound);
+		}
+
+		for (int i = 1; i < g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence.size(); i++)
+		{
+			temp_link_id = -1;
+			temp_from_node_no = g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i - 1];
+
+			if (g_node_type[temp_from_node_no] == 0)
+			{
+				for (int n = 0; n < g_outbound_node_size[temp_from_node_no]; n++)
+				{
+					if (g_outbound_node_id[temp_from_node_no][n] == g_internal_node_no_map[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i]])
+					{
+						temp_link_id = g_outbound_link_no[temp_from_node_no][n];
+						break;
+					}
+				}
+			}
+
+			if (g_node_type[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i]] == 0) //physical nodes
+			{
+				fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_external_node_id_map[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i]],
+					g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[i], -1, temp_link_id, g_best_upper_bound);
+			}
+			else if (g_node_type[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i]] == 3) //vehicle depot
+			{
+				fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i],
+					g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[i], -1, -1
+					, g_best_upper_bound);
+			}
+			else
+			{
+				fprintf(g_pFile_Vehicle_Path_PassengerLog, "%d,%d,%d,%d,%d,%d,%.3f\n", j, 1, g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i],
+					g_ending_state_vector[j].m_VSStateVector[0].m_visit_time_sequence[i], g_node_passenger_id[g_ending_state_vector[j].m_VSStateVector[0].m_visit_sequence[i]], -1
+					, g_best_upper_bound);
+			}
+		}
+	}
 
 	fprintf(g_pFileDebugLog, "Summary: Lower Bound = %f, upper Bound = %f, gap = %f, relative_gap = %.3f%%\n",
 
@@ -1405,16 +1488,16 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 		g_best_upper_bound,
 		(g_best_upper_bound - g_best_lower_bound),
 		(g_best_upper_bound - g_best_lower_bound) / max(1, g_best_upper_bound) *100.0
-			
-		);
+
+	);
 	fprintf(g_pFileDebugLog, "******************************************************************************************************************\n\n");
 	fprintf(g_pFileOutputLog, "%f,%f,%f,%.3f%%,",
-		
+
 		g_best_lower_bound,
 		g_best_upper_bound,
 		(g_best_upper_bound - g_best_lower_bound),
 		(g_best_upper_bound - g_best_lower_bound) / max(1, g_best_upper_bound) *100.0
-		);
+	);
 	cout << "End of Lagrangian Iteration Process " << endl;
 
 	return true;
@@ -1449,7 +1532,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		g_ProgramStop();
 	}
 	fprintf(g_pFile_Output_paxprofitLog, "iteration,stepSize,p1' profit,p2's profit,p3's profit,p4's profit,p5's profit,p6's profit,p7's profit,p8's profit,p9's profit,p10's profit,LowerBoundCost");
-	
+
 	//output file for vehicle state update during DP process
 	g_pFile_PathLog = fopen("PathLog.csv", "w");
 	if (g_pFile_PathLog == NULL)
@@ -1467,9 +1550,17 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		g_ProgramStop();
 	}
 
-    //read input date including input_node.csv, input_link.csv and input_agent.csv
+	g_pFile_Vehicle_Path_PassengerLog = fopen("output_VehicleMatrix.csv", "w");
+
+	if (g_pFile_Vehicle_Path_PassengerLog == NULL)
+	{
+		cout << "File output_VehicleMatrix.csv cannot be opened." << endl;
+		g_ProgramStop();
+	}
+
+	//read input date including input_node.csv, input_link.csv and input_agent.csv
 	g_ReadInputData();
-	
+
 	// definte timestamps
 	clock_t start_t, end_t, total_t;
 	start_t = clock();
@@ -1495,11 +1586,11 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		g_ProgramStop();
 	}
 	fprintf(g_pFile_OutputNodeLog, "node_id,node_type\n");
-	for (int i = 1;i <= g_number_of_nodes;i++)
+	for (int i = 1; i <= g_number_of_nodes; i++)
 	{
-		fprintf(g_pFile_OutputNodeLog, "%d,%d\n", i,g_node_type[i]);
+		fprintf(g_pFile_OutputNodeLog, "%d,%d\n", i, g_node_type[i]);
 	}
-	
+
 	//output_link.csv with virtual link
 	g_pFile_OutputLinkLog = fopen("output_link.csv", "w");
 	if (g_pFile_OutputLinkLog == NULL)
@@ -1508,9 +1599,9 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 		g_ProgramStop();
 	}
 	fprintf(g_pFile_OutputLinkLog, "from_node_id,to_node_id,link_type\n");
-	for (int i = 0;i < g_number_of_links;i++)
+	for (int i = 0; i < g_number_of_links; i++)
 	{
-		fprintf(g_pFile_OutputLinkLog, "%d,%d,%d\n", g_link_from_node_number[i],g_link_to_node_number[i], g_link_service_code[i]);
+		fprintf(g_pFile_OutputLinkLog, "%d,%d,%d\n", g_link_from_node_number[i], g_link_to_node_number[i], g_link_service_code[i]);
 	}//if link is virtual link, passenger:origin pax_no destination -pax_no ; vehicle:origin 100 destination 101
 
 

@@ -1,0 +1,167 @@
+Network has 192 nodes, 444 links, 10  passengers, 10 vehicles
+
+link no.385,  48->153, service code 1
+link no.386,  153->48, service code 1
+link no.387,  43->154, service code -1
+link no.388,  154->43, service code -1
+link no.389,  48->155, service code 2
+link no.390,  155->48, service code 2
+link no.391,  52->156, service code -2
+link no.392,  156->52, service code -2
+link no.393,  91->157, service code 3
+link no.394,  157->91, service code 3
+link no.395,  133->158, service code -3
+link no.396,  158->133, service code -3
+link no.397,  66->159, service code 4
+link no.398,  159->66, service code 4
+link no.399,  133->160, service code -4
+link no.400,  160->133, service code -4
+link no.401,  68->161, service code 5
+link no.402,  161->68, service code 5
+link no.403,  133->162, service code -5
+link no.404,  162->133, service code -5
+link no.405,  66->163, service code 6
+link no.406,  163->66, service code 6
+link no.407,  29->164, service code -6
+link no.408,  164->29, service code -6
+link no.409,  29->165, service code 7
+link no.410,  165->29, service code 7
+link no.411,  24->166, service code -7
+link no.412,  166->24, service code -7
+link no.413,  141->167, service code 8
+link no.414,  167->141, service code 8
+link no.415,  27->168, service code -8
+link no.416,  168->27, service code -8
+link no.417,  63->169, service code 9
+link no.418,  169->63, service code 9
+link no.419,  140->170, service code -9
+link no.420,  170->140, service code -9
+link no.421,  24->171, service code 10
+link no.422,  171->24, service code 10
+link no.423,  99->172, service code -10
+link no.424,  172->99, service code -10
+link no.425,  173->6, service code 100
+link no.426,  9->174, service code 101
+link no.427,  175->47, service code 100
+link no.428,  51->176, service code 101
+link no.429,  177->14, service code 100
+link no.430,  96->178, service code 101
+link no.431,  179->20, service code 100
+link no.432,  18->180, service code 101
+link no.433,  181->13, service code 100
+link no.434,  27->182, service code 101
+link no.435,  183->96, service code 100
+link no.436,  27->184, service code 101
+link no.437,  185->76, service code 100
+link no.438,  27->186, service code 101
+link no.439,  187->0, service code 100
+link no.440,  18->188, service code 101
+link no.441,  189->42, service code 100
+link no.442,  106->190, service code 101
+link no.443,  191->62, service code 100
+link no.444,  106->192, service code 101
+
+
+Debug: LB iteration 0, Vehicle 1 performing DP: origin 6 -> destination 9
+ Dual 	{{n9_1[2]}}; Label Cost -43.500000
+ 
+Debug: LB iteration 0, Vehicle 2 performing DP: origin 47 -> destination 51
+ Dual 	{{n51_1[2]}}; Label Cost -40.000000
+ 
+Debug: LB iteration 0, Vehicle 3 performing DP: origin 14 -> destination 96
+ Dual 	{{n96_9[2]}}; Label Cost -33.000000
+ 
+Debug: LB iteration 0, Vehicle 4 performing DP: origin 20 -> destination 18
+ Dual 	{{n18_5[2]}}; Label Cost -39.500000
+ 
+Debug: LB iteration 0, Vehicle 5 performing DP: origin 13 -> destination 27
+ Dual 	{{n27_3[2]}}; Label Cost -39.500000
+ 
+Debug: LB iteration 0, Vehicle 6 performing DP: origin 96 -> destination 27
+ Dual 	{{n27_7[2]_8[2]}}; Label Cost -126.199997
+ 
+Debug: LB iteration 0, Vehicle 7 performing DP: origin 76 -> destination 27
+ Dual 	{{n27_7[2]_8[2]}}; Label Cost -129.699997
+ 
+Debug: LB iteration 0, Vehicle 8 performing DP: origin 0 -> destination 18
+ 
+Debug: LB iteration 0, Vehicle 9 performing DP: origin 42 -> destination 106
+ Dual 	{{n106_1[2]}}; Label Cost -33.500000
+ 
+Debug: LB iteration 0, Vehicle 10 performing DP: origin 62 -> destination 106
+ Dual 	{{n106_5[2]}}; Label Cost -29.000000
+ LR_global_lower_bound = , 486.100006
+Generate upper bound
+Primal 	{{n9_6[2]_10[2]}}; Label Cost 79.500000
+LR_global_upper_bound += path_cost_by_vehicle_1, 79.500000, 319.500000
+upper bound generation, for vehicle 2, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 2, pax 10 is not allowed or no needed to servePrimal 	{{n51_7[2]_8[2]}}; Label Cost 86.800003
+LR_global_upper_bound += path_cost_by_vehicle_2, 86.800003, 586.300003
+upper bound generation, for vehicle 3, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 3, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 3, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 3, pax 10 is not allowed or no needed to servePrimal 	{{n96_4[2]}}; Label Cost 69.500000
+LR_global_upper_bound += path_cost_by_vehicle_3, 69.500000, 805.800003
+upper bound generation, for vehicle 4, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 4, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 4, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 4, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 4, pax 10 is not allowed or no needed to servePrimal 	{{n18_3[2]}}; Label Cost 63.500000
+LR_global_upper_bound += path_cost_by_vehicle_4, 63.500000, 989.300003
+upper bound generation, for vehicle 5, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 5, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 5, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 5, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 5, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 5, pax 10 is not allowed or no needed to servePrimal 	{{n27_2[2]}}; Label Cost 78.000000
+LR_global_upper_bound += path_cost_by_vehicle_5, 78.000000, 1157.300003
+upper bound generation, for vehicle 6, pax 2 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 6, pax 10 is not allowed or no needed to servePrimal 	{{n27_9[2]}}; Label Cost 66.500000
+LR_global_upper_bound += path_cost_by_vehicle_6, 66.500000, 1283.800003
+upper bound generation, for vehicle 7, pax 2 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 9 is not allowed or no needed to serve
+upper bound generation, for vehicle 7, pax 10 is not allowed or no needed to servePrimal 	{{n27_5[2]}}; Label Cost 63.500000
+LR_global_upper_bound += path_cost_by_vehicle_7, 63.500000, 1377.300003
+upper bound generation, for vehicle 8, pax 2 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 5 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 9 is not allowed or no needed to serve
+upper bound generation, for vehicle 8, pax 10 is not allowed or no needed to serveLR_global_upper_bound += path_cost_by_vehicle_8, 99999.000000, 101406.300003
+upper bound generation, for vehicle 9, pax 2 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 5 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 9 is not allowed or no needed to serve
+upper bound generation, for vehicle 9, pax 10 is not allowed or no needed to servePrimal 	{{n106_1[2]}}; Label Cost 66.500000
+LR_global_upper_bound += path_cost_by_vehicle_9, 66.500000, 101472.800003
+upper bound generation, for vehicle 10, pax 1 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 2 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 3 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 4 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 5 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 6 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 7 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 8 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 9 is not allowed or no needed to serve
+upper bound generation, for vehicle 10, pax 10 is not allowed or no needed to servePrimal 	{{n106}}; Label Cost 62.000000
+LR_global_upper_bound += path_cost_by_vehicle_10, 62.000000, 101534.800003Summary: Lower Bound = 486.100006, upper Bound = 99999.000000, gap = 99512.898438, relative_gap = 99.514%
+******************************************************************************************************************
+
+CPU Running Time = 187297 milliseconds

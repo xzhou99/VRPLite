@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerWorkingDirectory>C:\Users\jiaod\Desktop\0208-Single-vehicle-VRPPDTW\Cost\vehicle transportation time_1</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>C:\Users\jliu215\Desktop\Coding_4\VRPLite_06_2018\0605-Single-vehicle-VRPPDTW\Datasets\WestJordon_dataset</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerWorkingDirectory>C:\Work\AgentPlus_VRP\PHX_test_network</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>C:\ImportWork\VRPLite</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LocalDebuggerWorkingDirectory>C:\Users\zhuge\Desktop\master first\trans committee\VRP\1801\Chenr\Single VRP_includingBB_zhugerevison\Single VRP\AgentPlus\dataset\SF\2v1p</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>D:\B\Recommend Paper and Program\Other paper\Tie Shi\0303-Single-vehicle-VRPPDTW\dataset\VRPLite_Input</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerAttach>true</LocalDebuggerAttach>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LocalDebuggerWorkingDirectory>C:\Users\jiaod\Desktop\0208-Single-vehicle-VRPPDTW\Cost\vehicle transportation time_4</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>C:\ImportWork\VRPLite_2018_cpp_source_code\Datasets\WestJordon_dataset</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

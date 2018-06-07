@@ -1,0 +1,4 @@
+agent_id,agent_type,from_node_id,to_node_id,departure_time_start,departure_time_window,arrival_time_start,arrival_time_window,capacity,base_profit,VOIVTT_per_hour,VOWT_per_hour
+1,0,2,3,15,3,22,1,,100,,
+2,0,2,3,35,3,42,1,,100,,
+1,1,4,1,1,1,100,1,2,,22,0
