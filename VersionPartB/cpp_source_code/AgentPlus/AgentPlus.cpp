@@ -57,6 +57,13 @@ float** g_vehicle_origin_based_node_travel_time = NULL;
 float** g_vehicle_destination_based_node_travel_time = NULL;
 
 extern float g_UpperBoundGeneration(int LR_Iteration_no);
+void g_ProgramStop()
+{
+
+	cout << "Agent+ Program stops. Press any key to terminate. Thanks!" << endl;
+	getchar();
+	exit(0);
+};
 
 int get_node_external_number(int node)
 {
@@ -108,30 +115,38 @@ public:
 	}
 };
 
-std::map<std::string, int> g_state_map;
+std::map<std::string, int> g_state_map[_MAX_NUMBER_OF_VEHICLES];
 
-int g_find_state_index(std::string string_key)
+int g_find_state_index(int v, std::string string_key)
 {
-	if (g_state_map.find(string_key) != g_state_map.end())
+	if (g_state_map[v].find(string_key) != g_state_map[v].end())
 	{
-		return g_state_map[string_key];
+		return g_state_map[v][string_key];
 	}
 	else
 		return -1;  // not found
 }
 
-std::vector<CVRState> g_VRStateVector;
+std::vector<CVRState> g_VRStateVector[_MAX_NUMBER_OF_VEHICLES];
 
-void g_add_states(int parent_state_index, int number_of_passengers, int capacity)
+std::vector<int> g_VehicleFeasiblePaxVector[_MAX_NUMBER_OF_VEHICLES];  // which pax can be carried by this vehicle
+int g_vehicle_capacity[_MAX_NUMBER_OF_VEHICLES] = { 1 };
+
+void g_add_states(int v, int parent_state_index)
 {
 
-	CVRState element = g_VRStateVector[parent_state_index];
+	CVRState element = g_VRStateVector[v][parent_state_index];
 
-	g_VRStateVector[parent_state_index].m_outgoing_state_index_vector.push_back(parent_state_index);  // link my own state index to the parent state
-	g_VRStateVector[parent_state_index].m_outgoing_state_change_service_code_vector.push_back(0);  // link no change state index to the parent state
+	g_VRStateVector[v][parent_state_index].m_outgoing_state_index_vector.push_back(parent_state_index);  // link my own state index to the parent state
+	g_VRStateVector[v][parent_state_index].m_outgoing_state_change_service_code_vector.push_back(0);  // link no change state index to the parent state
 	
-	for (int p = 1; p <= number_of_passengers; p++)
+	int capacity = g_vehicle_capacity[v];
+	int number_of_passengers = g_number_of_passengers;
+
+	for (int p_i = 0; p_i < g_VehicleFeasiblePaxVector[v].size(); p_i++)
 	{
+		
+		int p = g_VehicleFeasiblePaxVector[v][p_i]; // p is the feasible pax id to be added 
 		if (element.passenger_carrying_state[p] == 0) // not carrying yet
 		{ 
 			// add pick up state 
@@ -139,6 +154,7 @@ void g_add_states(int parent_state_index, int number_of_passengers, int capacity
 			int pax_count = 0;
 			for (int pp = 1; pp <= number_of_passengers; pp++)  // copy vector states
 			{
+
 				new_element.passenger_carrying_state[pp] = element.passenger_carrying_state[pp];
 
 				if (element.passenger_carrying_state[pp] ==1)
@@ -153,20 +169,22 @@ void g_add_states(int parent_state_index, int number_of_passengers, int capacity
 				new_element.passenger_carrying_state[p] = 1;  // from 0 to 1
 
 				std::string string_key = new_element.generate_string_key();
-				int state_index = g_find_state_index(string_key);
+				int state_index = g_find_state_index(v, string_key);
 				if (state_index == -1)
 				{
 					// add new state
-					state_index = g_VRStateVector.size();
-					g_VRStateVector.push_back(new_element);
-					g_state_map[string_key] = state_index;
+					state_index = g_VRStateVector[v].size();
+					g_VRStateVector[v].push_back(new_element);
+					g_state_map[v][string_key] = state_index;
 				}
 
-				g_VRStateVector[parent_state_index].m_outgoing_state_index_vector.push_back(state_index);  // link new state index to the parent state
-				g_VRStateVector[parent_state_index].m_outgoing_state_change_service_code_vector.push_back(p);  // link new state index to the parent state
+				g_VRStateVector[v][parent_state_index].m_outgoing_state_index_vector.push_back(state_index);  // link new state index to the parent state
+				g_VRStateVector[v][parent_state_index].m_outgoing_state_change_service_code_vector.push_back(p);  // link new state index to the parent state
 			}
 			else
-			{ // do  nothing
+			{
+				int do_no = 0;
+				// do  nothing
 			}
 		}
 		else  // ==1 carried
@@ -186,17 +204,17 @@ void g_add_states(int parent_state_index, int number_of_passengers, int capacity
 			new_element.m_vehicle_capacity = pax_count - 1;
 
 			std::string string_key = new_element.generate_string_key();
-			int state_index = g_find_state_index(string_key);
+			int state_index = g_find_state_index(v,string_key);
 			if (state_index == -1)
 			{
 				// add new state
-				state_index = g_VRStateVector.size();
-				g_VRStateVector.push_back(new_element);
-				g_state_map[string_key] = state_index;
+				state_index = g_VRStateVector[v].size();
+				g_VRStateVector[v].push_back(new_element);
+				g_state_map[v][string_key] = state_index;
 			}
 
-			g_VRStateVector[parent_state_index].m_outgoing_state_index_vector.push_back(state_index);  // link new state index to the parent state
-			g_VRStateVector[parent_state_index].m_outgoing_state_change_service_code_vector.push_back((-1)*p);  // link new state index to the parent state
+			g_VRStateVector[v][parent_state_index].m_outgoing_state_index_vector.push_back(state_index);  // link new state index to the parent state
+			g_VRStateVector[v][parent_state_index].m_outgoing_state_change_service_code_vector.push_back((-1)*p);  // link new state index to the parent state
 		}
 	}
 }
@@ -266,7 +284,7 @@ float g_passenger_destination_multiplier[_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 
 //float g_passenger_request_cancelation_cost[_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 
-int g_vehicle_capacity[_MAX_NUMBER_OF_VEHICLES] = { 1 };
+
 
 int g_passenger_assigned_vehicle_id[_MAX_NUMBER_OF_PASSENGERS] = { 0 };
 int g_passenger_path_node_sequence[_MAX_NUMBER_OF_PASSENGERS][_MAX_NUMBER_OF_TIME_INTERVALS];
@@ -304,34 +322,40 @@ bool g_no_capacity_multiplier_flag = false;
 float g_travel_time_budget = 100;
 float g_idle_vehicle_benefit = -10;
 
-void g_create_all_states(int number_of_passengers = 10, int capacity = 1)
+void g_create_all_states()
 {
 	CVRState route_element; // 0000000000
 	std::string string_key = route_element.generate_string_key();
 
-	g_state_map[string_key] = 0;
-	g_VRStateVector.push_back(route_element);
 
-	int scan_state_index = 0;
-	while (g_VRStateVector.size() < _MAX_NUMBER_OF_STATES && scan_state_index< g_VRStateVector.size() && scan_state_index< _MAX_NUMBER_OF_STATES)
-	{
-		g_add_states(scan_state_index, number_of_passengers, capacity);
-		scan_state_index++;
-	}
+	for (int v = 1; v <= g_number_of_vehicles; v++)
+	{ 
+		g_state_map[v][string_key] = 0;
 
-	// print out 
-	for (int i = 0; i < g_VRStateVector.size(); i++)
-	{
-		std::string str = g_VRStateVector[i].generate_string_key();
-		fprintf(g_pFileDebugLog, "state no. %d: %s; outgoing state list:", i, str.c_str());
+		g_VRStateVector[v].push_back(route_element);
 
-		for (int w2 = 0; w2 < g_VRStateVector[i].m_outgoing_state_index_vector.size(); w2++)
+		int scan_state_index = 0;
+		while (g_VRStateVector[v].size() < _MAX_NUMBER_OF_STATES && scan_state_index< g_VRStateVector[v].size() && scan_state_index< _MAX_NUMBER_OF_STATES)
 		{
-			fprintf(g_pFileDebugLog, "%d  ", g_VRStateVector[i].m_outgoing_state_index_vector[w2]);
+			g_add_states(v,scan_state_index);
+			scan_state_index++;
 		}
 
-		fprintf(g_pFileDebugLog, "\n");
+		// print out 
+		for (int i = 0; i < g_VRStateVector[v].size(); i++)
+		{
+			std::string str = g_VRStateVector[v][i].generate_string_key();
+			fprintf(g_pFileDebugLog, "v: %d state no. %d: %s; outgoing state list:", v, i, str.c_str());
+
+			for (int w2 = 0; w2 < g_VRStateVector[v][i].m_outgoing_state_index_vector.size(); w2++)
+			{
+				fprintf(g_pFileDebugLog, "%d  ", g_VRStateVector[v][i].m_outgoing_state_index_vector[w2]);
+			}
+
+			fprintf(g_pFileDebugLog, "\n");
+		}
 	}
+
 }
 int g_add_new_node(int passenger_id, int beginning_time = -1, int end_time = -1, int pickup_flag = 0)
 {
@@ -430,7 +454,7 @@ float*** g_v_vertex_waiting_cost = NULL;
 void g_allocate_memory(int number_of_processors)
 {
 
-	int number_of_states = g_VRStateVector.size() + 1;
+	int number_of_states = _MAX_NUMBER_OF_STATES;
 	int number_of_nodes = g_number_of_nodes + 1;
 	int number_of_links = g_number_of_links + 1;
 	int number_of_time_intervals = g_number_of_time_intervals + 1;
@@ -448,7 +472,7 @@ void g_allocate_memory(int number_of_processors)
 		g_ProgramStop();
 	}
 
-	cout << "number of states = " << g_VRStateVector.size() << endl; 
+	cout << "number of states = " << _MAX_NUMBER_OF_STATES << endl;
 	
 	l_state_node_label_cost = Allocate3DDynamicArray<float>(number_of_nodes, number_of_time_intervals, number_of_states);
 	l_state_node_predecessor = Allocate3DDynamicArray<int>( number_of_nodes, number_of_time_intervals, number_of_states);
@@ -492,7 +516,7 @@ void g_free_memory_travel_time(int number_of_processors)
 
 void g_free_memory(int number_of_processors)
 {
-	int number_of_states = g_VRStateVector.size();
+	int number_of_states = _MAX_NUMBER_OF_STATES;
 	int number_of_nodes = g_number_of_nodes + 1;
 	int number_of_links = g_number_of_links + 1;
 	int number_of_time_intervals = g_number_of_time_intervals + 1;
@@ -553,6 +577,7 @@ float g_pc_optimal_time_dependenet_dynamic_programming(
 	// time-dependent label correcting algorithm with double queue implementation
 {
 
+	int v = vehicle_id;
 	if (arrival_time_ending > g_number_of_time_intervals)
 	{
 		TRACE("error");
@@ -570,7 +595,7 @@ float g_pc_optimal_time_dependenet_dynamic_programming(
 		for (int t = 0; t < g_number_of_time_intervals; t++)
 		{
 
-			for (int w = 0; w < g_VRStateVector.size(); w++)
+			for (int w = 0; w < g_VRStateVector[v].size(); w++)
 			{
 				lp_state_node_label_cost[p][i][t][w] = _MAX_LABEL_COST;
 				lp_state_node_predecessor[p][i][t][w] = -1;  // pointer to previous NODE INDEX from the current label at current node and time
@@ -617,10 +642,10 @@ float g_pc_optimal_time_dependenet_dynamic_programming(
 
 			int travel_time = g_link_free_flow_travel_time[link];
 
-			for (int w1 = 0; w1 < g_VRStateVector.size(); w1++)
+			for (int w1 = 0; w1 < g_VRStateVector[v].size(); w1++)
 			{
 
-				if (g_VRStateVector[w1].m_vehicle_capacity > vehicle_capacity) // skip all states exceeding vehicle capacity
+				if (g_VRStateVector[v][w1].m_vehicle_capacity > vehicle_capacity) // skip all states exceeding vehicle capacity
 					continue;
 
 				if (vehicle_id > g_number_of_physical_vehicles) // virtual vehicle
@@ -643,18 +668,18 @@ float g_pc_optimal_time_dependenet_dynamic_programming(
 				{
 
 
-					for (int w2_index = 0; w2_index < g_VRStateVector[w1].m_outgoing_state_index_vector.size(); w2_index++)
+					for (int w2_index = 0; w2_index < g_VRStateVector[v][w1].m_outgoing_state_index_vector.size(); w2_index++)
 					{
-						if (g_VRStateVector[w1].m_outgoing_state_change_service_code_vector[w2_index] != g_link_service_code[link])  //0,  +p or -p
+						if (g_VRStateVector[v][w1].m_outgoing_state_change_service_code_vector[w2_index] != g_link_service_code[link])  //0,  +p or -p
 							continue;
 
 						if (g_link_service_code[link] != 0)
 							TRACE("service_link!");
 
 
-						int w2 = g_VRStateVector[w1].m_outgoing_state_index_vector[w2_index];
+						int w2 = g_VRStateVector[v][w1].m_outgoing_state_index_vector[w2_index];
 
-						if (g_VRStateVector[w2].m_vehicle_capacity > vehicle_capacity)
+						if (g_VRStateVector[v][w2].m_vehicle_capacity > vehicle_capacity)
 							continue;
 
 						if (vehicle_id > g_number_of_physical_vehicles) // virtual vehicle
@@ -1185,6 +1210,20 @@ void g_ReadInputData()
 	//				g_ProgramStop();
 				}
 
+			
+				parser.GetValueByFieldName("departure_time_start", g_vehicle_departure_time_beginning[vehicle_no]);
+
+
+				string feasible_pax_id_list;
+				parser.GetValueByFieldName("feasible_pax_id_list", feasible_pax_id_list);
+
+				if (feasible_pax_id_list.size() > 0)
+				{
+					g_VehicleFeasiblePaxVector[vehicle_no] = ParseLineToIntegers(feasible_pax_id_list);
+					
+				}
+				
+
 				g_activity_node_flag[g_vehicle_origin_node[vehicle_no]] = 1;
 				g_activity_node_flag[g_vehicle_destination_node[vehicle_no]] = 1;
 				g_activity_node_ending_time[g_vehicle_origin_node[vehicle_no]] = g_vehicle_departure_time_ending[vehicle_no];
@@ -1233,6 +1272,8 @@ void g_ReadInputData()
 			g_vehicle_capacity[v] = 1;
 			g_VOIVTT_per_hour[v] = g_dummy_vehicle_cost_per_hour;
 			g_VOWT_per_hour[v] = 0;
+			g_VehicleFeasiblePaxVector[v].push_back(p);  // designate pax p to this virtual vehicle
+
 			g_number_of_vehicles++;
 	}
 
@@ -1526,10 +1567,10 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables(V
 
 				std::string state_str;
 
-				if (state_index < g_VRStateVector.size())
+				if (state_index < g_VRStateVector[v].size())
 				{
 
-					state_str = g_VRStateVector[state_index].generate_string_key();
+					state_str = g_VRStateVector[v][state_index].generate_string_key();
 				}
 
 				fprintf(g_pFileDebugLog, "\t[%s]\t",
@@ -2072,10 +2113,10 @@ float g_UpperBoundGeneration(int LR_Iteration_no)
 
 				std::string state_str;
 
-				if (state_index < g_VRStateVector.size())
+				if (state_index < g_VRStateVector[v].size())
 				{
 
-					state_str = g_VRStateVector[state_index].generate_string_key();
+					state_str = g_VRStateVector[v][state_index].generate_string_key();
 				}
 
 				fprintf(g_pFileDebugLog, "\t[%s]\t",
@@ -2635,7 +2676,10 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
 	g_ReadConfiguration();
 	g_ReadInputData();
-	g_create_all_states(g_number_of_passengers, g_max_vehicle_capacity);
+
+	g_create_all_states();
+
+
 
 	g_allocate_memory_travel_time(0);
 	g_generate_travel_time_matrix();
@@ -2649,9 +2693,9 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
 	start_t = clock();
 
-//	g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables(g_VRP_data);
+	g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables(&g_VRP_data);
 
-	g_Brand_and_Bound();
+	//g_Brand_and_Bound();
 
 	end_t = clock();
 

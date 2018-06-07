@@ -1,0 +1,25 @@
+Network has 160 nodes, 396 links, 2  passengers, 2 vehicles
+
+link no.385,  48->153, service code 1
+link no.386,  153->48, service code 1
+link no.387,  43->154, service code -1
+link no.388,  154->43, service code -1
+link no.389,  48->155, service code 2
+link no.390,  155->48, service code 2
+link no.391,  52->156, service code -2
+link no.392,  156->52, service code -2
+link no.393,  157->6, service code 100
+link no.394,  9->158, service code 101
+link no.395,  159->47, service code 100
+link no.396,  51->160, service code 101
+
+
+Debug: LB iteration 0, Vehicle 1 performing DP: origin 6 -> destination 9
+ 
+Debug: LB iteration 0, Vehicle 2 performing DP: origin 47 -> destination 51
+ LR_global_lower_bound = , 200.000000
+Generate upper bound
+LR_global_upper_bound += path_cost_by_vehicle_1, 99999.000000, 100059.000000LR_global_upper_bound += path_cost_by_vehicle_2, 99999.000000, 200118.000000Summary: Lower Bound = 200.000000, upper Bound = 99999.000000, gap = 99799.000000, relative_gap = 99.800%
+******************************************************************************************************************
+
+CPU Running Time = 79 milliseconds
