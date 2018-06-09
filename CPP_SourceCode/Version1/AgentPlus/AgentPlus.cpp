@@ -1,4 +1,4 @@
-﻿// AgentPlus.cpp : Defines the entry point for the console application.
+// AgentPlus.cpp : Defines the entry point for the console application.
 /* Copyright (C) 2015 Xuesong Zhou - All Rights Reserved*/
 
 //add your names here
@@ -43,7 +43,7 @@ std::map<int, string> g_external_passenger_id_map;
 std::map<int, string> g_external_vehicle_id_map;
 
 int g_number_of_threads = 4;
-// passenger info in Node as pickup and dropoff node are all passengers 
+// passenger info in Node as pickup and dropoff node are all passengers
 int g_node_passenger_id[_MAX_NUMBER_OF_NODES];
 int g_node_type[_MAX_NUMBER_OF_NODES];  //key nodeid; 1: pick up, 2: drop off
 int g_node_timestamp[_MAX_NUMBER_OF_NODES];  //key nodeid;, values type 1: pick up:ready time, 2: order time
@@ -246,13 +246,13 @@ class CVSState
 {
 public:
 	int current_node_id;  // space dimension
-						  //passengerID, nodeType 
+						  //passengerID, nodeType
 	std::map<int, int> passenger_service_state;
 	std::map<int, int> passenger_service_time;
 	std::map<int, int> passenger_service_begin_time;
 
 	std::map<int, int> passenger_carrying_state;
-	//visit nodes 
+	//visit nodes
 	std::vector<int> m_visit_sequence;  // store nodes f
 	std::vector<int> m_visit_time_sequence;  // store passing nodes times
 
@@ -381,7 +381,7 @@ public:
 	}
 
 
-	//class CVSState  record pax and vehicle's completed service 
+	//class CVSState  record pax and vehicle's completed service
 	void CountPassengerNumberOfVisits(int vehicle_id)
 	{
 
@@ -390,7 +390,7 @@ public:
 			if (it->second == 2)  // complete
 			{
 				int passenger_id = it->first;
-#pragma omp critical 
+#pragma omp critical
 				{
 					g_passenger_number_of_visits[passenger_id] += 1;
 					g_passenger_vehicle_visit_flag[passenger_id][vehicle_id] = 1;
@@ -435,7 +435,7 @@ public:
 
 
 	std::vector<CVSState> m_VSStateVector;
-	//state string 1_1_1,state index 
+	//state string 1_1_1,state index
 	std::map<std::string, int> m_state_map;
 
 	void Reset()
@@ -470,7 +470,7 @@ public:
 			m_state_map[string_key] = state_index;
 		}
 		else
-		{//DP 
+		{//DP
 			if (new_element.LabelCost < m_VSStateVector[state_index].LabelCost)
 			{
 				m_VSStateVector[state_index].Copy(&new_element);
@@ -506,7 +506,7 @@ public:
 		if (m_VSStateVector.size() >= 1)
 		{
 			std::string state_str = m_VSStateVector[0].generate_string_key();
-			//0 means least cost 
+			//0 means least cost
 			m_VSStateVector[0].CountPassengerNumberOfVisits(vehicle_id);
 			if (DualPriceFlag == 1)
 			{
@@ -559,7 +559,7 @@ float g_optimal_time_dependenet_dynamic_programming(
 	}
 
 	for (int p = 1; p < g_number_of_passengers; p++)
-	{//release all passengers to this vehicle 
+	{//release all passengers to this vehicle
 		g_passenger_vehicle_visit_flag[p][vehicle_id] = 0;
 	}
 	//step 2: Initialization for origin node at the preferred departure time, at departure time
@@ -586,7 +586,7 @@ float g_optimal_time_dependenet_dynamic_programming(
 
 		for (int n = 0; n < g_number_of_nodes; n++)
 		{
-			// step 1: sort m_VSStateVector by labelCost for scan best k elements in step2 
+			// step 1: sort m_VSStateVector by labelCost for scan best k elements in step2
 			g_time_dependent_state_vector[vehicle_id][n][t].Sort();
 
 
@@ -620,11 +620,11 @@ float g_optimal_time_dependenet_dynamic_programming(
 							{
 								continue;
 							}
-							//feasible state transitions 
+							//feasible state transitions
 							if ((to_node_type == 1 && pElement->GetPassengerServiceState(to_node_passenger_id) == 0)//pickup
 								|| (to_node_type == 2 && pElement->GetPassengerServiceState(to_node_passenger_id) == 1))  // delivery)
 							{//origin state is 0, then to 1; origin state is 1, then to 2.
-								// step 2.3 label cost updating inside this function 
+								// step 2.3 label cost updating inside this function
 
 								// for pickup process
 								if (to_node_type == 1)
@@ -632,7 +632,7 @@ float g_optimal_time_dependenet_dynamic_programming(
 									// skip pickup when the vehicle if on its capacity
 									if (g_time_dependent_state_vector[vehicle_id][n][t].m_VSStateVector[w_index].m_vehicle_capacity >= vehicle_capacity)// Tony: to_node? or from_node?
 										continue;
-									//waiting 
+									//waiting
 									if (next_time < g_activity_node_starting_time[to_node])
 									{
 										CVSState new_element;
@@ -660,7 +660,7 @@ float g_optimal_time_dependenet_dynamic_programming(
 								}
 								if (to_node_type == 2)
 								{
-									//waiting 
+									//waiting
 									if (next_time < g_activity_node_starting_time[to_node])
 									{
 										CVSState new_element;
@@ -771,7 +771,7 @@ void g_ReadInputData()
 	g_number_of_links = 0;  // initialize  the counter to 0
 	int interval_node_no = 1;
 
-	// step 1: read node file 
+	// step 1: read node file
 	CCSVParser parser;
 	if (parser.OpenCSVFile("input_node.csv", true))
 	{
@@ -821,7 +821,7 @@ void g_ReadInputData()
 		parser.CloseCSVFile();
 	}
 
-	// step 2: read link file 
+	// step 2: read link file
 
 	if (parser.OpenCSVFile("input_link.csv", true))
 	{
@@ -879,7 +879,7 @@ void g_ReadInputData()
 				g_ProgramStop();
 			}
 
-			for (int link_direction = -1; link_direction <= 1; link_direction += 2)  // called twice; -1 direction , 1 direction 
+			for (int link_direction = -1; link_direction <= 1; link_direction += 2)  // called twice; -1 direction , 1 direction
 			{
 				if (direction == -1 && link_direction == 1)
 					continue; // skip
@@ -1085,7 +1085,7 @@ void g_ReadInputData()
 
 					g_number_of_time_intervals = max(g_vehicle_arrival_time_ending[vehicle_no] + 10, g_number_of_time_intervals);
 
-					if (g_vehicle_arrival_time_ending[vehicle_no] < g_vehicle_departure_time_beginning[vehicle_no] + 13)  // we should use a shortest path travel time to check. 
+					if (g_vehicle_arrival_time_ending[vehicle_no] < g_vehicle_departure_time_beginning[vehicle_no] + 13)  // we should use a shortest path travel time to check.
 					{
 						cout << "warning: Arrival time for vehicle " << vehicle_no << " should be " << g_vehicle_departure_time_beginning[vehicle_no] + 120 << endl;
 						g_vehicle_arrival_time_ending[vehicle_no] = g_vehicle_departure_time_beginning[vehicle_no] + 60;
@@ -1127,7 +1127,7 @@ void g_ReadInputData()
 				g_updated_number_of_time_intervals = g_number_of_time_intervals;
 			}
 		}
-		
+
 		parser.CloseCSVFile();
 	}
 
@@ -1319,7 +1319,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 		}
 
 
-	// sequential DP for each vehicle, based on the LR prices 
+	// sequential DP for each vehicle, based on the LR prices
 	for (int v = 1; v <= g_number_of_vehicles; v++)
 	{
 		float path_cost_by_vehicle_v =
@@ -1333,7 +1333,7 @@ bool g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables()
 				g_vehicle_arrival_time_beginning[v],
 				g_vehicle_arrival_time_ending[v],
 				g_vehicle_capacity[v],
-				500,
+				5,
 				0);
 		LR_global_upper_bound += path_cost_by_vehicle_v;
 		for (int p = 1; p <= g_number_of_passengers; p++)
@@ -1565,7 +1565,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 	clock_t start_t, end_t, total_t;
 	start_t = clock();
 
-	//Lagrangian function---the major function 
+	//Lagrangian function---the major function
 	g_Optimization_Lagrangian_Method_Vehicle_Routing_Problem_Simple_Variables();
 
 
@@ -1578,7 +1578,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 	fprintf(g_pFileDebugLog, "CPU Running Time = %ld milliseconds\n", total_t);
 	fprintf(g_pFileOutputLog, "CPU Running Time =,%ld, milliseconds\n", total_t);
 
-	//output_node.csv with virtual node 
+	//output_node.csv with virtual node
 	g_pFile_OutputNodeLog = fopen("output_node.csv", "w");
 	if (g_pFile_OutputNodeLog == NULL)
 	{
