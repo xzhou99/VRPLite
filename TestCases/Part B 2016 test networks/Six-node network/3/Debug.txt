@@ -1,0 +1,23 @@
+Network has 12 nodes, 23 links, 2  passengers, 1 vehicles
+
+link no.14,  2->7, service code 1
+link no.15,  7->2, service code 1
+link no.16,  1->8, service code -1
+link no.17,  8->1, service code -1
+link no.18,  3->9, service code 2
+link no.19,  9->3, service code 2
+link no.20,  6->10, service code -2
+link no.21,  10->6, service code -2
+link no.22,  11->4, service code 100
+link no.23,  1->12, service code 101
+
+
+Debug: LB iteration 0, Vehicle 1 performing DP: origin 4 -> destination 1
+ Dual 	{{n1_1[2]}}; Label Cost 9.800000
+ LR_global_lower_bound = , 19.800000
+Generate upper bound
+Primal 	{{n1_2[2]}}; Label Cost 17.600000
+LR_global_upper_bound += path_cost_by_vehicle_1, 17.600000, 47.600000Summary: Lower Bound = 19.799999, upper Bound = 47.599998, gap = 27.799999, relative_gap = 58.403%
+******************************************************************************************************************
+
+CPU Running Time = 22 milliseconds

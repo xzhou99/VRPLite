@@ -1,0 +1,339 @@
+Network has 1084 nodes, 3220 links, 60  passengers, 15 vehicles
+
+link no.2951,  888->935, service code 1
+link no.2952,  935->888, service code 1
+link no.2953,  666->936, service code -1
+link no.2954,  936->666, service code -1
+link no.2955,  635->937, service code 2
+link no.2956,  937->635, service code 2
+link no.2957,  540->938, service code -2
+link no.2958,  938->540, service code -2
+link no.2959,  439->939, service code 3
+link no.2960,  939->439, service code 3
+link no.2961,  217->940, service code -3
+link no.2962,  940->217, service code -3
+link no.2963,  754->941, service code 4
+link no.2964,  941->754, service code 4
+link no.2965,  418->942, service code -4
+link no.2966,  942->418, service code -4
+link no.2967,  416->943, service code 5
+link no.2968,  943->416, service code 5
+link no.2969,  152->944, service code -5
+link no.2970,  944->152, service code -5
+link no.2971,  704->945, service code 6
+link no.2972,  945->704, service code 6
+link no.2973,  636->946, service code -6
+link no.2974,  946->636, service code -6
+link no.2975,  25->947, service code 7
+link no.2976,  947->25, service code 7
+link no.2977,  575->948, service code -7
+link no.2978,  948->575, service code -7
+link no.2979,  580->949, service code 8
+link no.2980,  949->580, service code 8
+link no.2981,  534->950, service code -8
+link no.2982,  950->534, service code -8
+link no.2983,  888->951, service code 9
+link no.2984,  951->888, service code 9
+link no.2985,  666->952, service code -9
+link no.2986,  952->666, service code -9
+link no.2987,  635->953, service code 10
+link no.2988,  953->635, service code 10
+link no.2989,  540->954, service code -10
+link no.2990,  954->540, service code -10
+link no.2991,  439->955, service code 11
+link no.2992,  955->439, service code 11
+link no.2993,  217->956, service code -11
+link no.2994,  956->217, service code -11
+link no.2995,  754->957, service code 12
+link no.2996,  957->754, service code 12
+link no.2997,  418->958, service code -12
+link no.2998,  958->418, service code -12
+link no.2999,  416->959, service code 13
+link no.3000,  959->416, service code 13
+link no.3001,  152->960, service code -13
+link no.3002,  960->152, service code -13
+link no.3003,  704->961, service code 14
+link no.3004,  961->704, service code 14
+link no.3005,  636->962, service code -14
+link no.3006,  962->636, service code -14
+link no.3007,  25->963, service code 15
+link no.3008,  963->25, service code 15
+link no.3009,  575->964, service code -15
+link no.3010,  964->575, service code -15
+link no.3011,  580->965, service code 16
+link no.3012,  965->580, service code 16
+link no.3013,  534->966, service code -16
+link no.3014,  966->534, service code -16
+link no.3015,  257->967, service code 17
+link no.3016,  967->257, service code 17
+link no.3017,  243->968, service code -17
+link no.3018,  968->243, service code -17
+link no.3019,  243->969, service code 18
+link no.3020,  969->243, service code 18
+link no.3021,  918->970, service code -18
+link no.3022,  970->918, service code -18
+link no.3023,  883->971, service code 19
+link no.3024,  971->883, service code 19
+link no.3025,  871->972, service code -19
+link no.3026,  972->871, service code -19
+link no.3027,  721->973, service code 20
+link no.3028,  973->721, service code 20
+link no.3029,  391->974, service code -20
+link no.3030,  974->391, service code -20
+link no.3031,  888->975, service code 21
+link no.3032,  975->888, service code 21
+link no.3033,  666->976, service code -21
+link no.3034,  976->666, service code -21
+link no.3035,  635->977, service code 22
+link no.3036,  977->635, service code 22
+link no.3037,  540->978, service code -22
+link no.3038,  978->540, service code -22
+link no.3039,  439->979, service code 23
+link no.3040,  979->439, service code 23
+link no.3041,  217->980, service code -23
+link no.3042,  980->217, service code -23
+link no.3043,  754->981, service code 24
+link no.3044,  981->754, service code 24
+link no.3045,  418->982, service code -24
+link no.3046,  982->418, service code -24
+link no.3047,  416->983, service code 25
+link no.3048,  983->416, service code 25
+link no.3049,  152->984, service code -25
+link no.3050,  984->152, service code -25
+link no.3051,  704->985, service code 26
+link no.3052,  985->704, service code 26
+link no.3053,  636->986, service code -26
+link no.3054,  986->636, service code -26
+link no.3055,  25->987, service code 27
+link no.3056,  987->25, service code 27
+link no.3057,  575->988, service code -27
+link no.3058,  988->575, service code -27
+link no.3059,  580->989, service code 28
+link no.3060,  989->580, service code 28
+link no.3061,  534->990, service code -28
+link no.3062,  990->534, service code -28
+link no.3063,  888->991, service code 29
+link no.3064,  991->888, service code 29
+link no.3065,  666->992, service code -29
+link no.3066,  992->666, service code -29
+link no.3067,  635->993, service code 30
+link no.3068,  993->635, service code 30
+link no.3069,  540->994, service code -30
+link no.3070,  994->540, service code -30
+link no.3071,  439->995, service code 31
+link no.3072,  995->439, service code 31
+link no.3073,  217->996, service code -31
+link no.3074,  996->217, service code -31
+link no.3075,  754->997, service code 32
+link no.3076,  997->754, service code 32
+link no.3077,  418->998, service code -32
+link no.3078,  998->418, service code -32
+link no.3079,  416->999, service code 33
+link no.3080,  999->416, service code 33
+link no.3081,  152->1000, service code -33
+link no.3082,  1000->152, service code -33
+link no.3083,  704->1001, service code 34
+link no.3084,  1001->704, service code 34
+link no.3085,  636->1002, service code -34
+link no.3086,  1002->636, service code -34
+link no.3087,  25->1003, service code 35
+link no.3088,  1003->25, service code 35
+link no.3089,  575->1004, service code -35
+link no.3090,  1004->575, service code -35
+link no.3091,  580->1005, service code 36
+link no.3092,  1005->580, service code 36
+link no.3093,  534->1006, service code -36
+link no.3094,  1006->534, service code -36
+link no.3095,  257->1007, service code 37
+link no.3096,  1007->257, service code 37
+link no.3097,  243->1008, service code -37
+link no.3098,  1008->243, service code -37
+link no.3099,  243->1009, service code 38
+link no.3100,  1009->243, service code 38
+link no.3101,  918->1010, service code -38
+link no.3102,  1010->918, service code -38
+link no.3103,  883->1011, service code 39
+link no.3104,  1011->883, service code 39
+link no.3105,  871->1012, service code -39
+link no.3106,  1012->871, service code -39
+link no.3107,  721->1013, service code 40
+link no.3108,  1013->721, service code 40
+link no.3109,  391->1014, service code -40
+link no.3110,  1014->391, service code -40
+link no.3111,  888->1015, service code 41
+link no.3112,  1015->888, service code 41
+link no.3113,  666->1016, service code -41
+link no.3114,  1016->666, service code -41
+link no.3115,  635->1017, service code 42
+link no.3116,  1017->635, service code 42
+link no.3117,  540->1018, service code -42
+link no.3118,  1018->540, service code -42
+link no.3119,  439->1019, service code 43
+link no.3120,  1019->439, service code 43
+link no.3121,  217->1020, service code -43
+link no.3122,  1020->217, service code -43
+link no.3123,  754->1021, service code 44
+link no.3124,  1021->754, service code 44
+link no.3125,  418->1022, service code -44
+link no.3126,  1022->418, service code -44
+link no.3127,  416->1023, service code 45
+link no.3128,  1023->416, service code 45
+link no.3129,  152->1024, service code -45
+link no.3130,  1024->152, service code -45
+link no.3131,  704->1025, service code 46
+link no.3132,  1025->704, service code 46
+link no.3133,  636->1026, service code -46
+link no.3134,  1026->636, service code -46
+link no.3135,  25->1027, service code 47
+link no.3136,  1027->25, service code 47
+link no.3137,  575->1028, service code -47
+link no.3138,  1028->575, service code -47
+link no.3139,  580->1029, service code 48
+link no.3140,  1029->580, service code 48
+link no.3141,  534->1030, service code -48
+link no.3142,  1030->534, service code -48
+link no.3143,  888->1031, service code 49
+link no.3144,  1031->888, service code 49
+link no.3145,  666->1032, service code -49
+link no.3146,  1032->666, service code -49
+link no.3147,  635->1033, service code 50
+link no.3148,  1033->635, service code 50
+link no.3149,  540->1034, service code -50
+link no.3150,  1034->540, service code -50
+link no.3151,  439->1035, service code 51
+link no.3152,  1035->439, service code 51
+link no.3153,  217->1036, service code -51
+link no.3154,  1036->217, service code -51
+link no.3155,  754->1037, service code 52
+link no.3156,  1037->754, service code 52
+link no.3157,  418->1038, service code -52
+link no.3158,  1038->418, service code -52
+link no.3159,  416->1039, service code 53
+link no.3160,  1039->416, service code 53
+link no.3161,  152->1040, service code -53
+link no.3162,  1040->152, service code -53
+link no.3163,  704->1041, service code 54
+link no.3164,  1041->704, service code 54
+link no.3165,  636->1042, service code -54
+link no.3166,  1042->636, service code -54
+link no.3167,  25->1043, service code 55
+link no.3168,  1043->25, service code 55
+link no.3169,  575->1044, service code -55
+link no.3170,  1044->575, service code -55
+link no.3171,  580->1045, service code 56
+link no.3172,  1045->580, service code 56
+link no.3173,  534->1046, service code -56
+link no.3174,  1046->534, service code -56
+link no.3175,  257->1047, service code 57
+link no.3176,  1047->257, service code 57
+link no.3177,  243->1048, service code -57
+link no.3178,  1048->243, service code -57
+link no.3179,  243->1049, service code 58
+link no.3180,  1049->243, service code 58
+link no.3181,  918->1050, service code -58
+link no.3182,  1050->918, service code -58
+link no.3183,  883->1051, service code 59
+link no.3184,  1051->883, service code 59
+link no.3185,  871->1052, service code -59
+link no.3186,  1052->871, service code -59
+link no.3187,  721->1053, service code 60
+link no.3188,  1053->721, service code 60
+link no.3189,  391->1054, service code -60
+link no.3190,  1054->391, service code -60
+link no.3191,  1055->894, service code 100
+link no.3192,  922->1056, service code 101
+link no.3193,  1057->417, service code 100
+link no.3194,  534->1058, service code 101
+link no.3195,  1059->883, service code 100
+link no.3196,  917->1060, service code 101
+link no.3197,  1061->894, service code 100
+link no.3198,  922->1062, service code 101
+link no.3199,  1063->417, service code 100
+link no.3200,  534->1064, service code 101
+link no.3201,  1065->894, service code 100
+link no.3202,  922->1066, service code 101
+link no.3203,  1067->417, service code 100
+link no.3204,  534->1068, service code 101
+link no.3205,  1069->883, service code 100
+link no.3206,  917->1070, service code 101
+link no.3207,  1071->894, service code 100
+link no.3208,  922->1072, service code 101
+link no.3209,  1073->417, service code 100
+link no.3210,  534->1074, service code 101
+link no.3211,  1075->894, service code 100
+link no.3212,  922->1076, service code 101
+link no.3213,  1077->417, service code 100
+link no.3214,  534->1078, service code 101
+link no.3215,  1079->883, service code 100
+link no.3216,  917->1080, service code 101
+link no.3217,  1081->894, service code 100
+link no.3218,  922->1082, service code 101
+link no.3219,  1083->417, service code 100
+link no.3220,  534->1084, service code 101
+
+
+Debug: LB iteration 0, Vehicle 1 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_48[1]}}; Label Cost -81.000000
+ 
+Debug: LB iteration 0, Vehicle 2 performing DP: origin 417 -> destination 534
+ Dual 	{{n534_56[1]}}; Label Cost -107.500000
+ 
+Debug: LB iteration 0, Vehicle 3 performing DP: origin 883 -> destination 917
+ Dual 	{{n917_56[1]}}; Label Cost -20.500000
+ 
+Debug: LB iteration 0, Vehicle 4 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_56[1]}}; Label Cost 13.500000
+ 
+Debug: LB iteration 0, Vehicle 5 performing DP: origin 417 -> destination 534
+ Dual 	{{n535_53[1]}}; Label Cost 44.500000
+ 
+Debug: LB iteration 0, Vehicle 6 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_48[1]}}; Label Cost 419.000000
+ 
+Debug: LB iteration 0, Vehicle 7 performing DP: origin 417 -> destination 534
+ Dual 	{{n535_54[1]}}; Label Cost 354.500000
+ 
+Debug: LB iteration 0, Vehicle 8 performing DP: origin 883 -> destination 917
+ Dual 	{{n917_52[1]}}; Label Cost 451.000000
+ 
+Debug: LB iteration 0, Vehicle 9 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_48[1]}}; Label Cost 513.500000
+ 
+Debug: LB iteration 0, Vehicle 10 performing DP: origin 417 -> destination 534
+ Dual 	{{n534_56[1]}}; Label Cost 487.000000
+ 
+Debug: LB iteration 0, Vehicle 11 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_48[1]}}; Label Cost 819.000000
+ 
+Debug: LB iteration 0, Vehicle 12 performing DP: origin 417 -> destination 534
+ Dual 	{{n534_56[1]}}; Label Cost 792.500000
+ 
+Debug: LB iteration 0, Vehicle 13 performing DP: origin 883 -> destination 917
+ Dual 	{{n917_56[1]}}; Label Cost 881.000000
+ 
+Debug: LB iteration 0, Vehicle 14 performing DP: origin 894 -> destination 922
+ Dual 	{{n922_56[1]}}; Label Cost 913.500000
+ 
+Debug: LB iteration 0, Vehicle 15 performing DP: origin 417 -> destination 534
+ Dual 	{{n534}}; Label Cost 986.000000
+ LR_global_lower_bound = , 7066.000000
+Generate upper bound
+Primal 	{{n922_48[1]}}; Label Cost -81.000000
+LR_global_upper_bound += path_cost_by_vehicle_1, -81.000000, 1719.000000Primal 	{{n534_56[1]}}; Label Cost -107.500000
+LR_global_upper_bound += path_cost_by_vehicle_2, -107.500000, 3411.500000Primal 	{{n917_56[1]}}; Label Cost -20.500000
+LR_global_upper_bound += path_cost_by_vehicle_3, -20.500000, 5191.000000Primal 	{{n922_56[1]}}; Label Cost 13.500000
+LR_global_upper_bound += path_cost_by_vehicle_4, 13.500000, 7004.500000Primal 	{{n535_53[1]}}; Label Cost 44.500000
+LR_global_upper_bound += path_cost_by_vehicle_5, 44.500000, 8849.000000Primal 	{{n922_48[1]}}; Label Cost 419.000000
+LR_global_upper_bound += path_cost_by_vehicle_6, 419.000000, 11068.000000Primal 	{{n535_54[1]}}; Label Cost 354.500000
+LR_global_upper_bound += path_cost_by_vehicle_7, 354.500000, 13222.500000Primal 	{{n917_52[1]}}; Label Cost 451.000000
+LR_global_upper_bound += path_cost_by_vehicle_8, 451.000000, 15473.500000Primal 	{{n922_48[1]}}; Label Cost 513.500000
+LR_global_upper_bound += path_cost_by_vehicle_9, 513.500000, 17787.000000Primal 	{{n534_56[1]}}; Label Cost 487.000000
+LR_global_upper_bound += path_cost_by_vehicle_10, 487.000000, 20074.000000Primal 	{{n922_48[1]}}; Label Cost 819.000000
+LR_global_upper_bound += path_cost_by_vehicle_11, 819.000000, 22693.000000Primal 	{{n534_56[1]}}; Label Cost 792.500000
+LR_global_upper_bound += path_cost_by_vehicle_12, 792.500000, 25285.500000Primal 	{{n917_56[1]}}; Label Cost 879.500000
+LR_global_upper_bound += path_cost_by_vehicle_13, 879.500000, 27965.000000Primal 	{{n922_56[1]}}; Label Cost 913.500000
+LR_global_upper_bound += path_cost_by_vehicle_14, 913.500000, 30678.500000Primal 	{{n534}}; Label Cost 986.000000
+LR_global_upper_bound += path_cost_by_vehicle_15, 986.000000, 33464.500000Summary: Lower Bound = 7066.000000, upper Bound = 33464.500000, gap = 26398.500000, relative_gap = 78.885%
+******************************************************************************************************************
+
+CPU Running Time = 1526103 milliseconds

@@ -1,0 +1,7 @@
+name,node_id,QEM_reference_node_id,control_type,control_type_name,cycle_length_in_second,offset_in_second,x,y,geometry
+,1,0,0,unknown_control,0,0,61.671,71.431,"<Point><coordinates>61.671000,71.431000</coordinates></Point>"
+,2,0,0,unknown_control,0,0,60.451,70.882,"<Point><coordinates>60.451000,70.882000</coordinates></Point>"
+,3,0,0,unknown_control,0,0,62.22,69.113,"<Point><coordinates>62.220000,69.113000</coordinates></Point>"
+,4,0,0,unknown_control,0,0,60.939,68.198,"<Point><coordinates>60.939000,68.198000</coordinates></Point>"
+,5,0,0,unknown_control,0,0,62.83,66.063,"<Point><coordinates>62.830000,66.063000</coordinates></Point>"
+,6,0,0,unknown_control,0,0,58.194,69.967,"<Point><coordinates>58.194000,69.967000</coordinates></Point>"
