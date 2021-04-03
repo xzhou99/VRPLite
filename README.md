@@ -3,7 +3,7 @@
 
 ##Main functions
 ![VRPLite's space time state representation](https://github.com/xzhou99/VRPLite/blob/master/Images/Image1.PNG)
-![NeXTA graphical user interface](https://github.com/xzhou99/VRPLite/blob/master/Images/Image1.PNG)
+![NeXTA graphical user interface](https://github.com/xzhou99/VRPLite/blob/master/Images/Image2.PNG)
 
 The goal of this package includes the following three aspects.
 (1)	Provide an open-source code base that enables transportation researchers and software developers to expand its range of capabilities to various traffic/transportation management applications.
