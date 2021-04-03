@@ -2,8 +2,8 @@
 # a path finding engine for scheduled transportation systems
 
 ##Main functions
-![VRPLite's space time state representation](Images/Image1.png)
-![NeXTA graphical user interface](Images/Image2.png)
+![VRPLite's space time state representation](https://github.com/xzhou99/VRPLite/blob/master/Images/Image1.PNG)
+![NeXTA graphical user interface](https://github.com/xzhou99/VRPLite/blob/master/Images/Image1.PNG)
 
 The goal of this package includes the following three aspects.
 (1)	Provide an open-source code base that enables transportation researchers and software developers to expand its range of capabilities to various traffic/transportation management applications.
